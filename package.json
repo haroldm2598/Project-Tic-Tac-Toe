@@ -1,0 +1,15 @@
+{
+	"name": "17_project",
+	"version": "1.0.0",
+	"description": "Timeline project",
+	"main": "index.js",
+	"scripts": {
+		"node-sass": "sass -w ./src/style/scss/:src/style/css"
+	},
+	"keywords": [],
+	"author": "",
+	"license": "ISC",
+	"devDependencies": {
+		"node-sass": "^7.0.1"
+	}
+}
