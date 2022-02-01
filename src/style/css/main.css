@@ -1,6 +1,60 @@
+@import url("https://fonts.googleapis.com/css2?family=Fira+Sans:wght@400;500;600;700;900&family=PT+Serif&display=swap");
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
 body {
-  background-color: yellow;
-  padding: 10em;
+  margin: 0;
+  padding: 0;
+  background-color: #e9ecef;
+}
+
+.headerMain {
+  display: flex;
+  justify-content: center;
+}
+.headerMain__title {
+  color: #212529;
+  font-size: 3rem;
+  font-family: "Fira Sans", sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.main {
+  height: 30em;
+  width: 50em;
+  margin: 0 auto 10em;
+  padding: 3em 4em;
+  border-radius: 1.5625em;
+  background-color: #adb5bd;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  grid-gap: 1.5em;
+}
+.main > *:not(.main__btn) {
+  background-color: #495057;
+}
+.main__box2, .main__box4, .main__box6, .main__box8 {
+  transition: all 0.5s ease;
+}
+.main__box2:hover, .main__box4:hover, .main__box6:hover, .main__box8:hover {
+  background-color: #f8f9fa;
+}
+.main__btn {
+  grid-column: -3/-2;
+  padding: 0.2em 0;
+  background-color: #e9ecef;
+  border-radius: 0.5em;
+  border: none;
+  font-size: "PT Serif", serif;
+  font-size: 1.4em;
+  font-weight: 600;
+  text-transform: uppercase;
+  cursor: pointer;
 }
 
 /*# sourceMappingURL=main.css.map */

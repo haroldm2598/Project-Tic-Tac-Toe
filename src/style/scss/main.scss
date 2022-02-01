@@ -1,7 +1,67 @@
-$yellow: yellow;
-$small: 10em;
+@import '../scss/compents/index';
+
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+}
 
 body {
-	background-color: $yellow;
-	padding: $small;
+	margin: 0;
+	padding: 0;
+	background-color: $lightColor-200;
+}
+
+.headerMain {
+	display: flex;
+	justify-content: center;
+
+	&__title {
+		color: $darkColor-400;
+		font-size: 3rem;
+		font-family: $FiraSans;
+		font-weight: $boldWeight;
+		text-transform: uppercase;
+	}
+}
+
+.main {
+	height: 30em;
+	width: 50em;
+	margin: 0 auto 10em;
+	padding: 3em 4em;
+	border-radius: 1.5625em;
+	background-color: $lightColor-500;
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	grid-template-rows: repeat(3, 1fr);
+	grid-gap: 1.5em;
+
+	& > *:not(&__btn) {
+		background-color: $darkColor-200;
+	}
+
+	&__box2,
+	&__box4,
+	&__box6,
+	&__box8 {
+		transition: all 0.5s ease;
+
+		&:hover {
+			background-color: $lightColor-100;
+		}
+	}
+
+	&__btn {
+		grid-column: -3 / -2;
+		padding: 0.2em 0;
+		background-color: $lightColor-200;
+		border-radius: 0.5em;
+		border: none;
+		font-size: $PtSerif;
+		font-size: 1.4em;
+		font-weight: $semiBoldWeight;
+		text-transform: uppercase;
+		cursor: pointer;
+	}
 }
