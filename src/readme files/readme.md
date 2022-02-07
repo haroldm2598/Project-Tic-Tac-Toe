@@ -23,3 +23,16 @@ font-family: 'PT Serif', serif;
 
 // Setup sass/scss without live-sass
 https://www.youtube.com/watch?v=pGcCWhl6ePQ
+
+Progress // TARGET COMPLETION 2weeks or less
+
+Jan-31 / Feb 1
+
+- Done Structuring Folder
+- Done Completing rules and procedure for work
+- Done Creating HTML and CSS as for basic static
+
+Feb 7
+
+- Creating basic javascript
+- Must connect it into html

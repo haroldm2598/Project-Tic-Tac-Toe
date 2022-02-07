@@ -26,10 +26,10 @@ body {
 }
 
 .main {
-	height: 30em;
-	width: 50em;
+	height: 35em;
+	width: 45em;
 	margin: 0 auto 10em;
-	padding: 3em 4em;
+	padding: 2.5em 3em;
 	border-radius: 1.5625em;
 	background-color: $lightColor-500;
 	display: grid;
@@ -41,6 +41,10 @@ body {
 		background-color: $darkColor-200;
 	}
 
+	& > * {
+		cursor: pointer;
+	}
+
 	&__box2,
 	&__box4,
 	&__box6,
@@ -49,6 +53,7 @@ body {
 
 		&:hover {
 			background-color: $lightColor-100;
+			transform: scale(1.1);
 		}
 	}
 

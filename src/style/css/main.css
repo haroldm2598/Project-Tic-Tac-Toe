@@ -24,10 +24,10 @@ body {
 }
 
 .main {
-  height: 30em;
-  width: 50em;
+  height: 35em;
+  width: 45em;
   margin: 0 auto 10em;
-  padding: 3em 4em;
+  padding: 2.5em 3em;
   border-radius: 1.5625em;
   background-color: #adb5bd;
   display: grid;
@@ -38,11 +38,15 @@ body {
 .main > *:not(.main__btn) {
   background-color: #495057;
 }
+.main > * {
+  cursor: pointer;
+}
 .main__box2, .main__box4, .main__box6, .main__box8 {
   transition: all 0.5s ease;
 }
 .main__box2:hover, .main__box4:hover, .main__box6:hover, .main__box8:hover {
   background-color: #f8f9fa;
+  transform: scale(1.1);
 }
 .main__btn {
   grid-column: -3/-2;
