@@ -41,11 +41,14 @@ body {
 .main > * {
   cursor: pointer;
 }
-.main__box2, .main__box4, .main__box6, .main__box8 {
+.main__box--para {
+  color: #fff;
+}
+.main__box1 {
   transition: all 0.5s ease;
 }
-.main__box2:hover, .main__box4:hover, .main__box6:hover, .main__box8:hover {
-  background-color: #f8f9fa;
+.main__box1:hover {
+  background-color: #ced4da;
   transform: scale(1.1);
 }
 .main__btn {

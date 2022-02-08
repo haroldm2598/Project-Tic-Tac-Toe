@@ -45,14 +45,17 @@ body {
 		cursor: pointer;
 	}
 
-	&__box2,
-	&__box4,
-	&__box6,
-	&__box8 {
+	&__box {
+		&--para {
+			color: #fff;
+		}
+	}
+
+	&__box1 {
 		transition: all 0.5s ease;
 
 		&:hover {
-			background-color: $lightColor-100;
+			background-color: $lightColor-400;
 			transform: scale(1.1);
 		}
 	}
