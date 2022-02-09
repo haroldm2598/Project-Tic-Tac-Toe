@@ -40,5 +40,7 @@ Feb 7
 Feb 8
 
 - Js basic function wheres can clickable and validation wheres cannot click again DONE
-  - scope and of the const playerTurn
+  - SOLUTION:: scope and of the const playerTurn
 - Pushing value of the playerTurn in to array
+
+Feb 9

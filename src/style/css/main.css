@@ -23,6 +23,19 @@ body {
   text-transform: uppercase;
 }
 
+.playerInfo {
+  margin: 1em 0;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  font-family: "PT Serif", serif;
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+.playerInfo__result {
+  visibility: hidden;
+}
+
 .main {
   height: 35em;
   width: 45em;
@@ -41,8 +54,17 @@ body {
 .main > * {
   cursor: pointer;
 }
+.main__box {
+  position: relative;
+}
 .main__box--para {
+  margin: 0;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
   color: #fff;
+  font-size: 5rem;
 }
 .main__box1 {
   transition: all 0.5s ease;

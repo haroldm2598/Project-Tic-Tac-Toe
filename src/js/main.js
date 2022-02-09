@@ -10,7 +10,7 @@ const Player = (sign) => {
 };
 
 const gameBoard = (() => {
-	const board = ['', '', '', '', '', '', '', '', ''];
+	const board = [];
 	const countBoard = () => console.log(board.length);
 
 	return { countBoard };
@@ -19,7 +19,6 @@ const gameBoard = (() => {
 const displayController = (() => {
 	const restartBtn = document.querySelector('#mainBtn');
 	const mainBox = document.querySelectorAll('#mainBox');
-	const testingArr = [];
 	const player1 = Player('X');
 	const player2 = Player('O');
 
@@ -28,18 +27,20 @@ const displayController = (() => {
 		playerTurn.setAttribute('class', 'main__box--para');
 
 		mainBox.addEventListener('click', () => {
-			// USE TERNARY FOR ALTERNATE PLAYER
-			// if player1 is done therefore player2 will be next assign
-			playerTurn.innerHTML = player1.getSign();
-			testingArr.push(playerTurn);
+			playerTurn.innerHTML = changingPlayer();
 			mainBox.appendChild(playerTurn);
-			console.log(testingArr);
 		});
 	});
 
-	/* 
-		- Make a private function validation Changing playerTurns
-	*/
+	// Make a private function validation Changing playerTurns
+	const changingPlayer = () => {
+		const turn = false;
+		/*
+		- FizzBuzz Logic with loop and inorder to alternate
+		- Must be changing if player1 already play therefore player2 turns
+		*/
+		return turn ? player1.getSign() : player2.getSign();
+	};
 
 	return {};
 })();

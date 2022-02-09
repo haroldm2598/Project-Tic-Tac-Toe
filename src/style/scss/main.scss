@@ -25,6 +25,20 @@ body {
 	}
 }
 
+.playerInfo {
+	margin: 1em 0;
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	font-family: $PtSerif;
+	font-size: 1.25rem;
+	font-weight: $semiBoldWeight;
+
+	&__result {
+		visibility: hidden;
+	}
+}
+
 .main {
 	height: 35em;
 	width: 45em;
@@ -46,8 +60,16 @@ body {
 	}
 
 	&__box {
+		position: relative;
+
 		&--para {
+			margin: 0;
+			position: absolute;
+			left: 50%;
+			top: 50%;
+			transform: translate(-50%, -50%);
 			color: #fff;
+			font-size: 5rem;
 		}
 	}
 
