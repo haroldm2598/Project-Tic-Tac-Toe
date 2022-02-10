@@ -44,3 +44,10 @@ Feb 8
 - Pushing value of the playerTurn in to array
 
 Feb 9
+
+- Logic of FizzBuzz must be the answer to alternate changing players
+
+Feb 10
+
+- Still the same. Feb9
+- Focus on looping gameBoard and trying to get and set of the fields of that.

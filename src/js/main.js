@@ -10,37 +10,71 @@ const Player = (sign) => {
 };
 
 const gameBoard = (() => {
-	const board = [];
-	const countBoard = () => console.log(board.length);
+	const board = [
+		['1', '', ''],
+		['', '5', ''],
+		['', '', '9']
+	];
 
-	return { countBoard };
+	const setBoard = (index, sign) => {
+		if (index > board.length) return;
+		board[index] = sign;
+	};
+
+	const getBoard = (index) => {
+		if (index > board.length) return;
+		return board[index];
+	};
+
+	// WORKING RESET
+	const resetBoard = () => {
+		for (let i = 0; i < board.length; i++) {
+			board[i] = '';
+		}
+	};
+
+	const testingBoard = () => {
+		for (let i = 0; i < board.length; i++) {
+			console.log(board[i]);
+		}
+	};
+
+	return { setBoard, getBoard, resetBoard, testingBoard };
 })();
 
 const displayController = (() => {
-	const restartBtn = document.querySelector('#mainBtn');
 	const mainBox = document.querySelectorAll('#mainBox');
-	const player1 = Player('X');
-	const player2 = Player('O');
+	const restartBtn = document.querySelector('#mainBtn');
 
 	mainBox.forEach((mainBox) => {
 		const playerTurn = document.createElement('p');
 		playerTurn.setAttribute('class', 'main__box--para');
 
 		mainBox.addEventListener('click', () => {
-			playerTurn.innerHTML = changingPlayer();
+			playerTurn.innerHTML = gameController.changingPlayer();
 			mainBox.appendChild(playerTurn);
 		});
 	});
 
-	// Make a private function validation Changing playerTurns
+	restartBtn.addEventListener('click', () => {
+		gameBoard.resetBoard();
+	});
+
+	return {};
+})();
+
+const gameController = (() => {
+	const player1 = Player('X');
+	const player2 = Player('O');
+
 	const changingPlayer = () => {
-		const turn = false;
+		const round = false;
 		/*
 		- FizzBuzz Logic with loop and inorder to alternate
 		- Must be changing if player1 already play therefore player2 turns
 		*/
-		return turn ? player1.getSign() : player2.getSign();
+		return round % 2 === 0 ? player1.getSign() : player2.getSign();
 	};
 
-	return {};
+	return { changingPlayer };
 })();
