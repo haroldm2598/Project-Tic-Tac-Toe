@@ -51,3 +51,9 @@ Feb 10
 
 - Still the same. Feb9
 - Focus on looping gameBoard and trying to get and set of the fields of that.
+- Must try webdevsimplied way of switching player for tictactoe
+
+Feb 11
+
+- SOLUTION:: parameter "{ once: true }" answer to not repeating clicking of eventListener to the same element
+- SOLUTION:: switching ternary by using 'variable not declared and using var = !var'

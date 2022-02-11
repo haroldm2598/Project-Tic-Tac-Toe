@@ -50,10 +50,14 @@ const displayController = (() => {
 		const playerTurn = document.createElement('p');
 		playerTurn.setAttribute('class', 'main__box--para');
 
-		mainBox.addEventListener('click', () => {
-			playerTurn.innerHTML = gameController.changingPlayer();
-			mainBox.appendChild(playerTurn);
-		});
+		mainBox.addEventListener(
+			'click',
+			() => {
+				playerTurn.innerHTML = gameController.changingPlayer();
+				mainBox.appendChild(playerTurn);
+			},
+			{ once: true }
+		);
 	});
 
 	restartBtn.addEventListener('click', () => {
@@ -64,16 +68,17 @@ const displayController = (() => {
 })();
 
 const gameController = (() => {
+	let round;
 	const player1 = Player('X');
 	const player2 = Player('O');
 
 	const changingPlayer = () => {
-		const round = false;
-		/*
-		- FizzBuzz Logic with loop and inorder to alternate
-		- Must be changing if player1 already play therefore player2 turns
-		*/
-		return round % 2 === 0 ? player1.getSign() : player2.getSign();
+		swapTurns();
+		return round ? player1.getSign() : player2.getSign();
+	};
+
+	const swapTurns = () => {
+		round = !round;
 	};
 
 	return { changingPlayer };
