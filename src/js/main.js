@@ -33,13 +33,7 @@ const gameBoard = (() => {
 		}
 	};
 
-	const testingBoard = () => {
-		for (let i = 0; i < board.length; i++) {
-			console.log(board[i]);
-		}
-	};
-
-	return { setBoard, getBoard, resetBoard, testingBoard };
+	return { setBoard, getBoard, resetBoard };
 })();
 
 const displayController = (() => {
@@ -49,19 +43,27 @@ const displayController = (() => {
 	mainBox.forEach((mainBox) => {
 		const playerTurn = document.createElement('p');
 		playerTurn.setAttribute('class', 'main__box--para');
+		playerTurn.setAttribute('id', 'mainBoxPara');
 
 		mainBox.addEventListener(
 			'click',
 			() => {
 				playerTurn.innerHTML = gameController.changingPlayer();
 				mainBox.appendChild(playerTurn);
+				console.log(playerTurn);
 			},
 			{ once: true }
 		);
 	});
 
 	restartBtn.addEventListener('click', () => {
+		// mainBox.forEach((mainBox) => {
+		// 	const paraId = document.querySelector('#mainBoxPara');
+		// 	paraId.remove();
+		// 	if (document.body.contains(paraId)) return;
+		// });
 		gameBoard.resetBoard();
+		gameController.resetBoard();
 	});
 
 	return {};
@@ -71,15 +73,31 @@ const gameController = (() => {
 	let round;
 	const player1 = Player('X');
 	const player2 = Player('O');
+	const playerTurn = document.querySelector('#playerTurn');
+
+	const changingPlayerOne = () => {
+		playerTurn.removeAttribute('class', 'playerInfo__turn');
+		playerTurn.textContent = 'Player 1 Turn';
+
+		return [player1.getSign(), playerTurn];
+	};
+
+	const changingPlayerTwo = () => {
+		playerTurn.setAttribute('class', 'playerInfo__turn');
+		playerTurn.textContent = 'Player 2 Turn';
+
+		return [player2.getSign(), playerTurn];
+	};
 
 	const changingPlayer = () => {
-		swapTurns();
-		return round ? player1.getSign() : player2.getSign();
-	};
-
-	const swapTurns = () => {
 		round = !round;
+		return round ? changingPlayerOne()[0] : changingPlayerTwo()[0];
 	};
 
-	return { changingPlayer };
+	const resetBoard = () => {
+		playerTurn.removeAttribute('class', 'playerInfo__turn');
+		playerTurn.textContent = '';
+	};
+
+	return { changingPlayer, resetBoard };
 })();

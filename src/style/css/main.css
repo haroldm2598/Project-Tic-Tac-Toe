@@ -32,6 +32,9 @@ body {
   font-size: 1.25rem;
   font-weight: 600;
 }
+.playerInfo__turn {
+  margin-left: 10em;
+}
 .playerInfo__result {
   visibility: hidden;
 }

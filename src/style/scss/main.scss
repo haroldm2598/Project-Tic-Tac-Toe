@@ -34,6 +34,10 @@ body {
 	font-size: 1.25rem;
 	font-weight: $semiBoldWeight;
 
+	&__turn {
+		margin-left: 10em;
+	}
+
 	&__result {
 		visibility: hidden;
 	}

@@ -57,3 +57,13 @@ Feb 11
 
 - SOLUTION:: parameter "{ once: true }" answer to not repeating clicking of eventListener to the same element
 - SOLUTION:: switching ternary by using 'variable not declared and using var = !var'
+
+Feb 14
+
+- Focusing on changing player turn innerHTML
+  - SOLUTION:: creating a new function and return both of getassign and new assign variable with design
+- Reset gameBoard reset UI
+
+Feb 15
+
+- Showing the winner and logic of the board
