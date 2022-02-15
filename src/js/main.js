@@ -39,6 +39,11 @@ const gameBoard = (() => {
 const displayController = (() => {
 	const mainBox = document.querySelectorAll('#mainBox');
 	const restartBtn = document.querySelector('#mainBtn');
+	let isTrigger;
+
+	const testing = () => {
+		return isTrigger ? { once: true } : { once: false };
+	};
 
 	mainBox.forEach((mainBox) => {
 		const playerTurn = document.createElement('p');
@@ -50,18 +55,20 @@ const displayController = (() => {
 			() => {
 				playerTurn.innerHTML = gameController.changingPlayer();
 				mainBox.appendChild(playerTurn);
-				console.log(playerTurn);
 			},
-			{ once: true }
+			testing()
 		);
 	});
 
 	restartBtn.addEventListener('click', () => {
-		// mainBox.forEach((mainBox) => {
-		// 	const paraId = document.querySelector('#mainBoxPara');
-		// 	paraId.remove();
-		// 	if (document.body.contains(paraId)) return;
-		// });
+		mainBox.forEach((mainBox) => {
+			const paraId = document.querySelector('#mainBoxPara');
+			if (document.body.contains(paraId)) {
+				paraId.remove();
+			}
+			isTrigger = !isTrigger;
+		});
+
 		gameBoard.resetBoard();
 		gameController.resetBoard();
 	});

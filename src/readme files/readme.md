@@ -66,4 +66,5 @@ Feb 14
 
 Feb 15
 
-- Showing the winner and logic of the board
+- Solve clicking but removing once true is necessary. Find a way using ternary
+<!-- - Showing the winner and logic of the board -->
