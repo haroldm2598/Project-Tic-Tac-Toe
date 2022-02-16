@@ -62,9 +62,13 @@ Feb 14
 
 - Focusing on changing player turn innerHTML
   - SOLUTION:: creating a new function and return both of getassign and new assign variable with design
-- Reset gameBoard reset UI
+- Reset gameBoard reset UI PROGRESSING
 
 Feb 15
 
 - Solve clicking but removing once true is necessary. Find a way using ternary
 <!-- - Showing the winner and logic of the board -->
+
+Feb 16
+
+- update on checking if element is empty therefore using var.childNodes.length if empty checking

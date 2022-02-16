@@ -41,10 +41,6 @@ const displayController = (() => {
 	const restartBtn = document.querySelector('#mainBtn');
 	let isTrigger;
 
-	const testing = () => {
-		return isTrigger ? { once: true } : { once: false };
-	};
-
 	mainBox.forEach((mainBox) => {
 		const playerTurn = document.createElement('p');
 		playerTurn.setAttribute('class', 'main__box--para');
@@ -61,17 +57,34 @@ const displayController = (() => {
 	});
 
 	restartBtn.addEventListener('click', () => {
-		mainBox.forEach((mainBox) => {
+		mainBox.forEach(() => {
 			const paraId = document.querySelector('#mainBoxPara');
 			if (document.body.contains(paraId)) {
 				paraId.remove();
 			}
-			isTrigger = !isTrigger;
 		});
 
 		gameBoard.resetBoard();
 		gameController.resetBoard();
 	});
+
+	function testing() {
+		isTrigger = true;
+		/* 
+			mainBox.childNodes.length if empty therefore false and true afterwards
+			mainBox should use foreach methods in order to work with it
+			problem if using foreach having scope and closure problem therefore 
+			variable isn't getting the value of it from conditional statement
+		*/
+		mainBox.forEach((mainBox) => {
+			if (mainBox.childNodes.length) {
+				isTrigger = false;
+			}
+		});
+
+		console.log(isTrigger);
+		return isTrigger ? { once: true } : { once: false };
+	}
 
 	return {};
 })();
