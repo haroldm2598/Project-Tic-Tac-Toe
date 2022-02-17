@@ -37,8 +37,8 @@ const gameBoard = (() => {
 })();
 
 const displayController = (() => {
-	const mainBox = document.querySelectorAll('#mainBox');
 	const restartBtn = document.querySelector('#mainBtn');
+	let mainBox = document.querySelectorAll('#mainBox');
 	let isTrigger;
 
 	mainBox.forEach((mainBox) => {
@@ -69,20 +69,16 @@ const displayController = (() => {
 	});
 
 	function testing() {
-		isTrigger = true;
 		/* 
 			mainBox.childNodes.length if empty therefore false and true afterwards
 			mainBox should use foreach methods in order to work with it
 			problem if using foreach having scope and closure problem therefore 
 			variable isn't getting the value of it from conditional statement
+			childNodes only determine if there Attribute , Comments, Text and Elements
 		*/
-		mainBox.forEach((mainBox) => {
-			if (mainBox.childNodes.length) {
-				isTrigger = false;
-			}
-		});
+		let playerTurn = document.querySelector('#main');
+		console.log(playerTurn.childNodes.length);
 
-		console.log(isTrigger);
 		return isTrigger ? { once: true } : { once: false };
 	}
 
