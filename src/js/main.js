@@ -39,7 +39,21 @@ const gameBoard = (() => {
 const displayController = (() => {
 	const restartBtn = document.querySelector('#mainBtn');
 	let mainBox = document.querySelectorAll('#mainBox');
-	let isTrigger;
+	let isTrigger = testing2();
+
+	restartBtn.addEventListener('click', () => {
+		mainBox.forEach(() => {
+			const paraId = document.querySelector('#mainBoxPara');
+			if (document.body.contains(paraId)) {
+				paraId.remove();
+			}
+		});
+
+		testing(isTrigger);
+		gameBoard.resetBoard();
+		gameController.resetBoard();
+		console.log(mainBox.childNodes);
+	});
 
 	mainBox.forEach((mainBox) => {
 		const playerTurn = document.createElement('p');
@@ -52,23 +66,11 @@ const displayController = (() => {
 				playerTurn.innerHTML = gameController.changingPlayer();
 				mainBox.appendChild(playerTurn);
 			},
-			testing()
+			testing(isTrigger)
 		);
 	});
 
-	restartBtn.addEventListener('click', () => {
-		mainBox.forEach(() => {
-			const paraId = document.querySelector('#mainBoxPara');
-			if (document.body.contains(paraId)) {
-				paraId.remove();
-			}
-		});
-
-		gameBoard.resetBoard();
-		gameController.resetBoard();
-	});
-
-	function testing() {
+	function testing(isTrigger) {
 		/* 
 			mainBox.childNodes.length if empty therefore false and true afterwards
 			mainBox should use foreach methods in order to work with it
@@ -76,10 +78,11 @@ const displayController = (() => {
 			variable isn't getting the value of it from conditional statement
 			childNodes only determine if there Attribute , Comments, Text and Elements
 		*/
-		let playerTurn = document.querySelector('#main');
-		console.log(playerTurn.childNodes.length);
-
 		return isTrigger ? { once: true } : { once: false };
+	}
+
+	function testing2() {
+		return mainBox.childNodes.length > 0 ? true : false;
 	}
 
 	return {};

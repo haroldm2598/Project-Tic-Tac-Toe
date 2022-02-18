@@ -72,3 +72,9 @@ Feb 15
 Feb 16
 
 - update on checking if element is empty therefore using var.childNodes.length if empty checking
+
+Feb 18
+
+- Maybe restructure the html inorder to find the childNodes.length of the mainBox
+- Add remove attribute to the reset button
+- Is must next week is the last day of making this app.
