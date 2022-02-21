@@ -21,10 +21,10 @@ const gameBoard = (() => {
 		board[index] = sign;
 	};
 
-	const getBoard = (index) => {
-		if (index > board.length) return;
-		return board[index];
-	};
+	// const getBoard = (index) => {
+	// 	if (index > board.length) return;
+	// 	return board[index];
+	// };
 
 	// WORKING RESET
 	const resetBoard = () => {
@@ -33,27 +33,14 @@ const gameBoard = (() => {
 		}
 	};
 
-	return { setBoard, getBoard, resetBoard };
+	return { setBoard, resetBoard };
 })();
 
 const displayController = (() => {
 	const restartBtn = document.querySelector('#mainBtn');
 	let mainBox = document.querySelectorAll('#mainBox');
-	let isTrigger = testing2();
-
-	restartBtn.addEventListener('click', () => {
-		mainBox.forEach(() => {
-			const paraId = document.querySelector('#mainBoxPara');
-			if (document.body.contains(paraId)) {
-				paraId.remove();
-			}
-		});
-
-		testing(isTrigger);
-		gameBoard.resetBoard();
-		gameController.resetBoard();
-		console.log(mainBox.childNodes);
-	});
+	// if gameBoard logic is working try this code
+	// let isTrigger;
 
 	mainBox.forEach((mainBox) => {
 		const playerTurn = document.createElement('p');
@@ -63,27 +50,43 @@ const displayController = (() => {
 		mainBox.addEventListener(
 			'click',
 			() => {
-				playerTurn.innerHTML = gameController.changingPlayer();
+				playerTurn.innerHTML = gameController.changingPlayers();
 				mainBox.appendChild(playerTurn);
 			},
-			testing(isTrigger)
+			{ once: false }
+			// if gameBoard logic is working try this code
+			// testing(isTrigger)
 		);
 	});
 
-	function testing(isTrigger) {
-		/* 
-			mainBox.childNodes.length if empty therefore false and true afterwards
-			mainBox should use foreach methods in order to work with it
-			problem if using foreach having scope and closure problem therefore 
-			variable isn't getting the value of it from conditional statement
-			childNodes only determine if there Attribute , Comments, Text and Elements
-		*/
-		return isTrigger ? { once: true } : { once: false };
-	}
+	restartBtn.addEventListener('click', () => {
+		mainBox.forEach(() => {
+			const paraId = document.querySelector('#mainBoxPara');
+			if (document.body.contains(paraId)) {
+				paraId.remove();
+			}
+		});
 
-	function testing2() {
-		return mainBox.childNodes.length > 0 ? true : false;
-	}
+		gameBoard.resetBoard();
+		gameController.resetBoard();
+		// if gameBoard logic is working try this code
+		// console.log(mainBox.childNodes.length);
+	});
+
+	// if gameBoard logic is working try this code
+	// function testing(isTrigger) {
+	// 	/*
+	// 		mainBox.childNodes.length if empty therefore false and true afterwards
+	// 		mainBox should use foreach methods in order to work with it
+	// 		problem if using foreach having scope and closure problem therefore
+	// 		variable isn't getting the value of it from conditional statement
+	// 		childNodes only determine if there Attribute , Comments, Text and Elements
+	// 	*/
+	// 	return isTrigger ? { once: true } : { once: false };
+	// }
+	// function testing2() {
+	// 	return mainBox.childNodes.length > 0 ? true : false;
+	// }
 
 	return {};
 })();
@@ -94,23 +97,44 @@ const gameController = (() => {
 	const player2 = Player('O');
 	const playerTurn = document.querySelector('#playerTurn');
 
-	const changingPlayerOne = () => {
-		playerTurn.removeAttribute('class', 'playerInfo__turn');
-		playerTurn.textContent = 'Player 1 Turn';
+	const changingPlayers = () => {
+		const PlayerOne = () => {
+			playerTurn.removeAttribute('class', 'playerInfo__turn');
+			playerTurn.textContent = 'Player 1 Turn';
 
-		return [player1.getSign(), playerTurn];
+			return [player1.getSign(), playerTurn];
+		};
+
+		const PlayerTwo = () => {
+			playerTurn.setAttribute('class', 'playerInfo__turn');
+			playerTurn.textContent = 'Player 2 Turn';
+
+			return [player2.getSign(), playerTurn];
+		};
+
+		return (() => {
+			round = !round;
+			return round ? PlayerOne()[0] : PlayerTwo()[0];
+		})();
 	};
 
-	const changingPlayerTwo = () => {
-		playerTurn.setAttribute('class', 'playerInfo__turn');
-		playerTurn.textContent = 'Player 2 Turn';
+	const winningCondition = () => {
+		const boardNumbers = [
+			[0, 1, 2],
+			[3, 4, 5],
+			[6, 7, 8],
+			[0, 3, 6],
+			[1, 4, 7],
+			[2, 5, 8],
+			[0, 4, 8],
+			[2, 4, 6]
+		];
 
-		return [player2.getSign(), playerTurn];
-	};
-
-	const changingPlayer = () => {
-		round = !round;
-		return round ? changingPlayerOne()[0] : changingPlayerTwo()[0];
+		const testingBoard = (() => {
+			for (let n of boardNumbers) {
+				console.log(n);
+			}
+		})();
 	};
 
 	const resetBoard = () => {
@@ -118,5 +142,5 @@ const gameController = (() => {
 		playerTurn.textContent = '';
 	};
 
-	return { changingPlayer, resetBoard };
+	return { changingPlayers, resetBoard };
 })();

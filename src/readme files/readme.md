@@ -78,3 +78,18 @@ Feb 18
 - Maybe restructure the html inorder to find the childNodes.length of the mainBox
 - Add remove attribute to the reset button
 - Is must next week is the last day of making this app.
+
+Feb 21
+
+- Maybe priority logic game in array before adding remove all element and length in order to read it.
+- set a numbers in gameboard and then get the value of it.
+
+Winning Condition
+[0, 1, 2]
+[3, 4, 5]
+[6, 7, 8]
+[0, 3, 6]
+[1, 4, 7]
+[2, 5, 8]
+[0, 4, 8]
+[2, 4, 6]
