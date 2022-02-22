@@ -10,15 +10,15 @@ const Player = (sign) => {
 };
 
 const gameBoard = (() => {
-	const board = [
-		['1', '', ''],
-		['', '5', ''],
-		['', '', '9']
-	];
+	const board = ['', '', '', '', '', '', '', '', ''];
 
-	const setBoard = (index, sign) => {
-		if (index > board.length) return;
-		board[index] = sign;
+	const setBoard = (sign) => {
+		for (let i = 0; i < board.length; i++) {
+			if (9 < board[i]) {
+				board.push(sign);
+			}
+		}
+		console.log(board);
 	};
 
 	// const getBoard = (index) => {
@@ -50,7 +50,9 @@ const displayController = (() => {
 		mainBox.addEventListener(
 			'click',
 			() => {
-				playerTurn.innerHTML = gameController.changingPlayers();
+				const next = gameController.changingPlayers();
+				playerTurn.innerHTML = next;
+				gameBoard.setBoard(next);
 				mainBox.appendChild(playerTurn);
 			},
 			{ once: false }
@@ -129,12 +131,6 @@ const gameController = (() => {
 			[0, 4, 8],
 			[2, 4, 6]
 		];
-
-		const testingBoard = (() => {
-			for (let n of boardNumbers) {
-				console.log(n);
-			}
-		})();
 	};
 
 	const resetBoard = () => {
@@ -144,3 +140,16 @@ const gameController = (() => {
 
 	return { changingPlayers, resetBoard };
 })();
+
+// Testing TypeOf
+/*
+const getType = (src) =>
+	({}.toString
+		.call(src)
+		.match(/\s([a-zA-Z]+)/)[1]
+		.toLowerCase());
+
+const typeOfTest = (() => {
+	console.log(getType(gameController.winningCondition));
+})();
+*/

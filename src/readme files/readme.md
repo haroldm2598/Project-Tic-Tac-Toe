@@ -93,3 +93,9 @@ Winning Condition
 [2, 5, 8]
 [0, 4, 8]
 [2, 4, 6]
+
+Feb 22
+
+- Setting a board
+- get value of board
+- logical statement after all of that is working
