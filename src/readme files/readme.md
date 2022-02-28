@@ -105,3 +105,5 @@ Feb 28
 - MainBox should put correct array position.
 - Setting board should input the correct place of an array
 - therefore it would put the responded value to the array
+- Try to push mainbox into board
+- Try to setit and console log is must
