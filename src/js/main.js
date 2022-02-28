@@ -2,6 +2,7 @@
     GameBoard store where what code for the game and what logic can you input
     DisplayController where code for posting the actual clientSide 
 */
+
 const Player = (sign) => {
 	const symbol = sign;
 	const getSign = () => symbol;
@@ -10,12 +11,12 @@ const Player = (sign) => {
 };
 
 const gameBoard = (() => {
-	const board = ['', '', '', '', '', '', '', '', ''];
+	const board = [];
 
 	const setBoard = (sign) => {
-		for (let i = 0; i < board.length; i++) {
-			if (9 < board[i]) {
-				board.push(sign);
+		for (let i = 0; i < sign.length; i++) {
+			if (board.length <= 8) {
+				board.push(sign[i]);
 			}
 		}
 		console.log(board);

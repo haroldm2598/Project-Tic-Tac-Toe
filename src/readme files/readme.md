@@ -99,3 +99,9 @@ Feb 22
 - Setting a board
 - get value of board
 - logical statement after all of that is working
+
+Feb 28
+
+- MainBox should put correct array position.
+- Setting board should input the correct place of an array
+- therefore it would put the responded value to the array
