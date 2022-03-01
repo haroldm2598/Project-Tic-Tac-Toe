@@ -100,10 +100,14 @@ Feb 22
 - get value of board
 - logical statement after all of that is working
 
-Feb 28
+Feb 28 - March 1
 
-- MainBox should put correct array position.
 - Setting board should input the correct place of an array
 - therefore it would put the responded value to the array
-- Try to push mainbox into board
-- Try to setit and console log is must
+- mainBox should push into array and must be a number in order to make logical condition
+  problem :: {
+  - if we push number how will the array categorize the sign of the player?
+  - categorize in order to know who will win the game
+    }
+- loop the mainBox in order to get the index and push into array (board)
+- if we click the correct mainbox event should push the index of it

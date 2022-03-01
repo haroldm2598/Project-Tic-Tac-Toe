@@ -122,6 +122,7 @@ const gameController = (() => {
 	};
 
 	const winningCondition = () => {
+		// try check project ideas(object literal) in CODESANDBOX.IO
 		const boardNumbers = [
 			[0, 1, 2],
 			[3, 4, 5],
