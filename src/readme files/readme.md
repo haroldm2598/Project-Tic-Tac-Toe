@@ -100,7 +100,7 @@ Feb 22
 - get value of board
 - logical statement after all of that is working
 
-Feb 28 - March 1
+Feb 28 - March 2
 
 - Setting board should input the correct place of an array
 - therefore it would put the responded value to the array
@@ -111,3 +111,5 @@ Feb 28 - March 1
     }
 - loop the mainBox in order to get the index and push into array (board)
 - if we click the correct mainbox event should push the index of it
+<!-- --------------------------MUST TRY THIS METHOD------------------------------------- -->
+- inorder to insert specific element array index must try to use splice + find method

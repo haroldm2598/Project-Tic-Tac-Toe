@@ -15,9 +15,8 @@ const gameBoard = (() => {
 
 	const setBoard = (sign) => {
 		for (let i = 0; i < sign.length; i++) {
-			if (board.length <= 8) {
-				board.push(sign[i]);
-			}
+			if (board.length <= 8) return;
+			board.push(sign[i]);
 		}
 		console.log(board);
 	};
@@ -43,7 +42,7 @@ const displayController = (() => {
 	// if gameBoard logic is working try this code
 	// let isTrigger;
 
-	mainBox.forEach((mainBox) => {
+	mainBox.forEach((mainBox, index) => {
 		const playerTurn = document.createElement('p');
 		playerTurn.setAttribute('class', 'main__box--para');
 		playerTurn.setAttribute('id', 'mainBoxPara');
