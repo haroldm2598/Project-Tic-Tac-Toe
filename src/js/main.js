@@ -11,12 +11,14 @@ const Player = (sign) => {
 };
 
 const gameBoard = (() => {
+	// const board = ['', '', '', '', '', '', '', '', ''];
 	const board = [];
 
 	const setBoard = (sign) => {
 		for (let i = 0; i < sign.length; i++) {
-			if (board.length <= 8) return;
-			board.push(sign[i]);
+			if (board.length <= 8) {
+				board.push(sign[i]);
+			}
 		}
 		console.log(board);
 	};
@@ -42,20 +44,20 @@ const displayController = (() => {
 	// if gameBoard logic is working try this code
 	// let isTrigger;
 
-	mainBox.forEach((mainBox, index) => {
+	mainBox.forEach((element, index) => {
 		const playerTurn = document.createElement('p');
 		playerTurn.setAttribute('class', 'main__box--para');
 		playerTurn.setAttribute('id', 'mainBoxPara');
 
-		mainBox.addEventListener(
+		element.addEventListener(
 			'click',
 			() => {
-				const next = gameController.changingPlayers();
+				let next = gameController.changingPlayers();
 				playerTurn.innerHTML = next;
-				gameBoard.setBoard(next);
-				mainBox.appendChild(playerTurn);
-			},
-			{ once: false }
+				element.appendChild(playerTurn);
+				gameBoard.setBoard(JSON.stringify(index));
+			}
+			// ,{ once: false }
 			// if gameBoard logic is working try this code
 			// testing(isTrigger)
 		);
@@ -143,14 +145,12 @@ const gameController = (() => {
 })();
 
 // Testing TypeOf
-/*
-const getType = (src) =>
-	({}.toString
-		.call(src)
-		.match(/\s([a-zA-Z]+)/)[1]
-		.toLowerCase());
+// const getType = (src) =>
+// ({}.toString
+// 	.call(src)
+// 	.match(/\s([a-zA-Z]+)/)[1]
+// 	.toLowerCase());
 
-const typeOfTest = (() => {
-	console.log(getType(gameController.winningCondition));
-})();
-*/
+// const typeOfTest = (() => {
+// console.log(getType(mainBox));
+// })();
