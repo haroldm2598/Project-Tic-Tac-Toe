@@ -3,3 +3,6 @@
 
 - RETURN STATEMENT FOR LOOP
   https://stackoverflow.com/questions/11714503/does-return-stop-a-loop
+
+- REGEX REPLACING INSIDE ARRAY
+  https://stackoverflow.com/questions/953311/replace-string-in-javascript-array

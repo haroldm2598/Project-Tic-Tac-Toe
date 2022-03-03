@@ -11,16 +11,28 @@ const Player = (sign) => {
 };
 
 const gameBoard = (() => {
-	// const board = ['', '', '', '', '', '', '', '', ''];
-	const board = [];
+	const board = ['', '', '', '', '', '', '', '', ''];
+	// const board = [];
 
 	const setBoard = (sign) => {
 		for (let i = 0; i < sign.length; i++) {
-			if (board.length <= 8) {
-				board.push(sign[i]);
+			// if (board.length <= 8) {
+			// 	board.push(sign[i]);
+			// }
+
+			// if (board.length <= 8) {
+			// 	for (const gameBoard of board) {
+			// 		gameBoard = gameBoard.replace(/''/g, sign[i]);
+			// 	}
+			// }
+
+			for (let gameBoard in board) {
+				// let testing = gameBoard.push(sign[i]);
+				// gameBoard = gameBoard.replace(/'/g, testing);
+				console.log(gameBoard);
 			}
 		}
-		console.log(board);
+		// console.log(board);
 	};
 
 	// const getBoard = (index) => {
@@ -53,9 +65,10 @@ const displayController = (() => {
 			'click',
 			() => {
 				let next = gameController.changingPlayers();
+				let stringConvert = JSON.stringify(index);
 				playerTurn.innerHTML = next;
 				element.appendChild(playerTurn);
-				gameBoard.setBoard(JSON.stringify(index));
+				gameBoard.setBoard(stringConvert);
 			}
 			// ,{ once: false }
 			// if gameBoard logic is working try this code

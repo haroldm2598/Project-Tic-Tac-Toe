@@ -100,12 +100,12 @@ Feb 22
 - get value of board
 - logical statement after all of that is working
 
-Feb 28 - March 2
+Feb 28 - March 3
 
 - Setting board should input the correct place of an array
 - therefore it would put the responded value to the array
 - mainBox should push into array and must be a number in order to make logical condition
-  problem :: {
+  PROBLEM :: {
   - if we push number how will the array categorize the sign of the player?
   - categorize in order to know who will win the game
     }
@@ -113,3 +113,13 @@ Feb 28 - March 2
 - if we click the correct mainbox event should push the index of it
 <!-- --------------------------MUST TRY THIS METHOD------------------------------------- -->
 - inorder to insert specific element array index must try to use splice + find method
+  SOLVE :: {
+  - cause if only the last player who sign is the winner of the game
+  - no need to push the sign so the index of it will be categorise as the position of the sign
+  - who ever last push and result of the game will be winner
+  - focusing on the get board result then analyze put some logical reasoning
+    PROBLEM :: {
+    - it might cause result the winner if even thought doesn't complete the game
+      }
+      }
+- Try use regex to replace inside array of quotes if the array has quotes
