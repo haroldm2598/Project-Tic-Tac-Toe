@@ -123,3 +123,9 @@ Feb 28 - March 3
       }
       }
 - Try use regex to replace inside array of quotes if the array has quotes
+
+March 4
+SOLVE:: { - using splice and inserting index
+PROBLEM:: { - proper placing must try to add null
+}
+}

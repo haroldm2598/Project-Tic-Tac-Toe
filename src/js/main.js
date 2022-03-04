@@ -14,7 +14,7 @@ const gameBoard = (() => {
 	const board = ['', '', '', '', '', '', '', '', ''];
 	// const board = [];
 
-	const setBoard = (sign) => {
+	const setBoard = (sign, index) => {
 		for (let i = 0; i < sign.length; i++) {
 			// if (board.length <= 8) {
 			// 	board.push(sign[i]);
@@ -26,13 +26,21 @@ const gameBoard = (() => {
 			// 	}
 			// }
 
-			for (let gameBoard in board) {
-				// let testing = gameBoard.push(sign[i]);
-				// gameBoard = gameBoard.replace(/'/g, testing);
-				console.log(gameBoard);
+			// for (let i = 0; board.length; i++) {
+			// 	board[i].push(sign[i]);
+			// 	// boards = boards.replace(/,/g, testing);
+			// 	// console.log(boards);
+			// }
+
+			// WORKING BUT PLACING ISN'T
+			// board.splice(index, 0, sign[i]);
+
+			if (board.length <= 8) {
+				board.splice(index, 0, sign[i]);
 			}
 		}
-		// console.log(board);
+
+		console.log(board);
 	};
 
 	// const getBoard = (index) => {
@@ -65,10 +73,10 @@ const displayController = (() => {
 			'click',
 			() => {
 				let next = gameController.changingPlayers();
-				let stringConvert = JSON.stringify(index);
+				// let stringConvert = JSON.stringify(index);
 				playerTurn.innerHTML = next;
 				element.appendChild(playerTurn);
-				gameBoard.setBoard(stringConvert);
+				gameBoard.setBoard(next, index);
 			}
 			// ,{ once: false }
 			// if gameBoard logic is working try this code
