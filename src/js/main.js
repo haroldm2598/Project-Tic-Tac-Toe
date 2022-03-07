@@ -12,41 +12,20 @@ const Player = (sign) => {
 
 const gameBoard = (() => {
 	const board = ['', '', '', '', '', '', '', '', ''];
-	// const board = [];
+	const boardResult = [];
 
 	const setBoard = (sign, index) => {
 		for (let i = 0; i < sign.length; i++) {
-			// if (board.length <= 8) {
-			// 	board.push(sign[i]);
-			// }
-
-			// if (board.length <= 8) {
-			// 	for (const gameBoard of board) {
-			// 		gameBoard = gameBoard.replace(/''/g, sign[i]);
-			// 	}
-			// }
-
-			// for (let i = 0; board.length; i++) {
-			// 	board[i].push(sign[i]);
-			// 	// boards = boards.replace(/,/g, testing);
-			// 	// console.log(boards);
-			// }
-
-			// WORKING BUT PLACING ISN'T
-			// board.splice(index, 0, sign[i]);
-
-			if (board.length <= 8) {
-				board.splice(index, 0, sign[i]);
-			}
+			board.splice(index, 1, sign[i]);
 		}
 
 		console.log(board);
 	};
 
-	// const getBoard = (index) => {
-	// 	if (index > board.length) return;
-	// 	return board[index];
-	// };
+	const getBoard = (index) => {
+		boardResult.push(index);
+		console.log(boardResult);
+	};
 
 	// WORKING RESET
 	const resetBoard = () => {
@@ -55,7 +34,7 @@ const gameBoard = (() => {
 		}
 	};
 
-	return { setBoard, resetBoard };
+	return { setBoard, getBoard, resetBoard };
 })();
 
 const displayController = (() => {
@@ -77,6 +56,7 @@ const displayController = (() => {
 				playerTurn.innerHTML = next;
 				element.appendChild(playerTurn);
 				gameBoard.setBoard(next, index);
+				gameBoard.getBoard(index);
 			}
 			// ,{ once: false }
 			// if gameBoard logic is working try this code
