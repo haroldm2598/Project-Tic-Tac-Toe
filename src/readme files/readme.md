@@ -155,3 +155,7 @@ Progress // TARGET COMPLETION 2weeks or less
 
 - Getting the value of the board then compare it
 - Using comparison operator
+
+## March 8
+
+- Not yet done

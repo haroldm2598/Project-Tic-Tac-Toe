@@ -22,12 +22,21 @@ const gameBoard = (() => {
 		console.log(board);
 	};
 
-	const getBoard = (index) => {
-		boardResult.push(index);
+	const getBoard = () => {
+		/*
+			- get the arr board length or index of it
+			- get in from mainBox.forEach
+			- use comparison operator in order to know who's gonna win the game
+			- input that in gameController Area 
+		*/
+		for (let i = 0; i < board.length; i++) {
+			if (board[i] === 'X') {
+				boardResult.push(board);
+			}
+		}
 		console.log(boardResult);
 	};
 
-	// WORKING RESET
 	const resetBoard = () => {
 		for (let i = 0; i < board.length; i++) {
 			board[i] = '';
@@ -56,7 +65,7 @@ const displayController = (() => {
 				playerTurn.innerHTML = next;
 				element.appendChild(playerTurn);
 				gameBoard.setBoard(next, index);
-				gameBoard.getBoard(index);
+				gameBoard.getBoard();
 			}
 			// ,{ once: false }
 			// if gameBoard logic is working try this code
@@ -101,18 +110,19 @@ const gameController = (() => {
 	const player1 = Player('X');
 	const player2 = Player('O');
 	const playerTurn = document.querySelector('#playerTurn');
+	const winnerResult = document.querySelector('#playerResult');
 
 	const changingPlayers = () => {
 		const PlayerOne = () => {
-			playerTurn.removeAttribute('class', 'playerInfo__turn');
-			playerTurn.textContent = 'Player 1 Turn';
+			playerTurn.setAttribute('class', 'playerInfo__turn');
+			playerTurn.textContent = 'Player 2 Turn';
 
 			return [player1.getSign(), playerTurn];
 		};
 
 		const PlayerTwo = () => {
-			playerTurn.setAttribute('class', 'playerInfo__turn');
-			playerTurn.textContent = 'Player 2 Turn';
+			playerTurn.removeAttribute('class', 'playerInfo__turn');
+			playerTurn.textContent = 'Player 1 Turn';
 
 			return [player2.getSign(), playerTurn];
 		};
@@ -135,6 +145,16 @@ const gameController = (() => {
 			[0, 4, 8],
 			[2, 4, 6]
 		];
+
+		// // gameBoard.getBoard()
+		// if (player1.getSign() === 'X') {
+		// 	// loop the boardNumbers in this area
+		// } else if (player2.getSign() === 'O') {
+		// 	// loop the boardNumbers in this area
+		// } else {
+		// 	// Draw
+		// }
+		// setTimeout(() => gameBoard.getBoard(), 5000);
 	};
 
 	const resetBoard = () => {
