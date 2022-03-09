@@ -156,6 +156,7 @@ Progress // TARGET COMPLETION 2weeks or less
 - Getting the value of the board then compare it
 - Using comparison operator
 
-## March 8
+## March 8 - March 9
 
-- Not yet done
+- Get the index of arr board of specific player
+- Then compare it inside of winning Condition function

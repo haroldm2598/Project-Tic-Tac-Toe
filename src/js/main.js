@@ -1,8 +1,3 @@
-/*
-    GameBoard store where what code for the game and what logic can you input
-    DisplayController where code for posting the actual clientSide 
-*/
-
 const Player = (sign) => {
 	const symbol = sign;
 	const getSign = () => symbol;
@@ -12,7 +7,7 @@ const Player = (sign) => {
 
 const gameBoard = (() => {
 	const board = ['', '', '', '', '', '', '', '', ''];
-	const boardResult = [];
+	// const boardResult = [];
 
 	const setBoard = (sign, index) => {
 		for (let i = 0; i < sign.length; i++) {
@@ -22,25 +17,27 @@ const gameBoard = (() => {
 		console.log(board);
 	};
 
-	const getBoard = () => {
+	const getBoard = (index) => {
+		console.log(index);
+		// EXAMPLE 1 but not working properly
 		/*
-			- get the arr board length or index of it
-			- get in from mainBox.forEach
-			- use comparison operator in order to know who's gonna win the game
-			- input that in gameController Area 
-		*/
 		for (let i = 0; i < board.length; i++) {
 			if (board[i] === 'X') {
-				boardResult.push(board);
+				boardResult.push(index);
+			} else {
+				boardResult.push(index);
 			}
 		}
 		console.log(boardResult);
+		*/
 	};
 
 	const resetBoard = () => {
 		for (let i = 0; i < board.length; i++) {
 			board[i] = '';
 		}
+
+		// boardResult.length = [];
 	};
 
 	return { setBoard, getBoard, resetBoard };
@@ -65,7 +62,7 @@ const displayController = (() => {
 				playerTurn.innerHTML = next;
 				element.appendChild(playerTurn);
 				gameBoard.setBoard(next, index);
-				gameBoard.getBoard();
+				gameBoard.getBoard(index);
 			}
 			// ,{ once: false }
 			// if gameBoard logic is working try this code
@@ -147,14 +144,13 @@ const gameController = (() => {
 		];
 
 		// // gameBoard.getBoard()
-		// if (player1.getSign() === 'X') {
+		// if (player1.getSign() === 'X' && indexes of the place) {
 		// 	// loop the boardNumbers in this area
 		// } else if (player2.getSign() === 'O') {
 		// 	// loop the boardNumbers in this area
 		// } else {
 		// 	// Draw
 		// }
-		// setTimeout(() => gameBoard.getBoard(), 5000);
 	};
 
 	const resetBoard = () => {
@@ -162,16 +158,16 @@ const gameController = (() => {
 		playerTurn.textContent = '';
 	};
 
-	return { changingPlayers, resetBoard };
+	return { changingPlayers, resetBoard, winningCondition };
 })();
 
 // Testing TypeOf
 // const getType = (src) =>
-// ({}.toString
-// 	.call(src)
-// 	.match(/\s([a-zA-Z]+)/)[1]
-// 	.toLowerCase());
+// 	({}.toString
+// 		.call(src)
+// 		.match(/\s([a-zA-Z]+)/)[1]
+// 		.toLowerCase());
 
 // const typeOfTest = (() => {
-// console.log(getType(mainBox));
+// 	console.log(getType(gameController.winningCondition()));
 // })();
