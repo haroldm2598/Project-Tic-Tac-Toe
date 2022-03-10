@@ -7,18 +7,23 @@ const Player = (sign) => {
 
 const gameBoard = (() => {
 	const board = ['', '', '', '', '', '', '', '', ''];
-	// const boardResult = [];
+	const boardResult = [];
 
 	const setBoard = (sign, index) => {
 		for (let i = 0; i < sign.length; i++) {
 			board.splice(index, 1, sign[i]);
 		}
-
-		console.log(board);
+		// console.log(board);
 	};
 
-	const getBoard = (index) => {
-		console.log(index);
+	const getBoard = () => {
+		board.forEach((element, index) => {
+			if (element === 'X' || element === 'O') {
+				boardResult.push(index);
+			}
+		});
+
+		console.log([...new Set(boardResult)]);
 		// EXAMPLE 1 but not working properly
 		/*
 		for (let i = 0; i < board.length; i++) {
@@ -62,7 +67,6 @@ const displayController = (() => {
 				playerTurn.innerHTML = next;
 				element.appendChild(playerTurn);
 				gameBoard.setBoard(next, index);
-				gameBoard.getBoard(index);
 			}
 			// ,{ once: false }
 			// if gameBoard logic is working try this code
@@ -143,6 +147,7 @@ const gameController = (() => {
 			[2, 4, 6]
 		];
 
+		gameBoard.getBoard();
 		// // gameBoard.getBoard()
 		// if (player1.getSign() === 'X' && indexes of the place) {
 		// 	// loop the boardNumbers in this area
