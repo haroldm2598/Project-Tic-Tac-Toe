@@ -156,8 +156,10 @@ Progress // TARGET COMPLETION 2weeks or less
 - Getting the value of the board then compare it
 - Using comparison operator
 
-## March 8 - March 10
+## March 8 - March 11
 
 - Get the index of arr board of specific player
 - Then compare it inside of winning Condition function
 - Try to Factory module the (winningCondition) innside MainBox EventListener
+- In winningCondition code a logical operator inside it
+- Loop the winningCondition must try use filter and some Array methods

@@ -7,23 +7,24 @@ const Player = (sign) => {
 
 const gameBoard = (() => {
 	const board = ['', '', '', '', '', '', '', '', ''];
-	const boardResult = [];
 
 	const setBoard = (sign, index) => {
 		for (let i = 0; i < sign.length; i++) {
 			board.splice(index, 1, sign[i]);
 		}
-		// console.log(board);
+		console.log(board);
 	};
 
-	const getBoard = () => {
+	const getBoard = (resultArr) => {
+		let result;
 		board.forEach((element, index) => {
 			if (element === 'X' || element === 'O') {
-				boardResult.push(index);
+				resultArr.push(index);
 			}
 		});
+		result = console.log([...new Set(resultArr)]);
 
-		console.log([...new Set(boardResult)]);
+		return result;
 		// EXAMPLE 1 but not working properly
 		/*
 		for (let i = 0; i < board.length; i++) {
@@ -67,6 +68,7 @@ const displayController = (() => {
 				playerTurn.innerHTML = next;
 				element.appendChild(playerTurn);
 				gameBoard.setBoard(next, index);
+				gameController.winningCondition();
 			}
 			// ,{ once: false }
 			// if gameBoard logic is working try this code
@@ -136,6 +138,8 @@ const gameController = (() => {
 
 	const winningCondition = () => {
 		// try check project ideas(object literal) in CODESANDBOX.IO
+		const playerOne = [];
+		const playerTwo = [];
 		const boardNumbers = [
 			[0, 1, 2],
 			[3, 4, 5],
@@ -147,15 +151,23 @@ const gameController = (() => {
 			[2, 4, 6]
 		];
 
-		gameBoard.getBoard();
-		// // gameBoard.getBoard()
-		// if (player1.getSign() === 'X' && indexes of the place) {
-		// 	// loop the boardNumbers in this area
-		// } else if (player2.getSign() === 'O') {
-		// 	// loop the boardNumbers in this area
-		// } else {
-		// 	// Draw
-		// }
+		const boardNumResult = () => {};
+
+		const playerResult = (param) => {
+			return (winnerResult.innerHTML = `${param} won the game!!`);
+		};
+
+		if (
+			player1.getSign() === 'X' &&
+			gameBoard.getBoard(playerOne) === boardNumResult()
+		) {
+			// playerResult('Player 1');
+		} else if (
+			player2.getSign() === 'O' &&
+			gameBoard.getBoard(playerOne) === boardNumResult()
+		) {
+			playerResult('Player 2');
+		}
 	};
 
 	const resetBoard = () => {

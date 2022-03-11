@@ -35,10 +35,6 @@ body {
 .playerInfo__turn {
   margin-left: 10em;
 }
-.playerInfo__result {
-  visibility: hidden;
-}
-
 .main {
   height: 35em;
   width: 45em;
