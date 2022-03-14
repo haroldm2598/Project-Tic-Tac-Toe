@@ -17,25 +17,17 @@ const gameBoard = (() => {
 
 	const getBoard = (resultArr) => {
 		let result;
+
 		board.forEach((element, index) => {
 			if (element === 'X' || element === 'O') {
 				resultArr.push(index);
 			}
 		});
-		result = console.log([...new Set(resultArr)]);
 
-		return result;
-		// EXAMPLE 1 but not working properly
-		/*
-		for (let i = 0; i < board.length; i++) {
-			if (board[i] === 'X') {
-				boardResult.push(index);
-			} else {
-				boardResult.push(index);
-			}
-		}
-		console.log(boardResult);
-		*/
+		return console.log(resultArr);
+		// result = console.log([...new Set(resultArr)]);
+
+		// return result;
 	};
 
 	const resetBoard = () => {
@@ -151,22 +143,31 @@ const gameController = (() => {
 			[2, 4, 6]
 		];
 
-		const boardNumResult = () => {};
-
-		const playerResult = (param) => {
-			return (winnerResult.innerHTML = `${param} won the game!!`);
+		const boardNumResult = () => {
+			boardNumbers.filter((e) => console.log(e.some((e) => console.log(e))));
 		};
 
-		if (
-			player1.getSign() === 'X' &&
-			gameBoard.getBoard(playerOne) === boardNumResult()
-		) {
-			// playerResult('Player 1');
-		} else if (
-			player2.getSign() === 'O' &&
-			gameBoard.getBoard(playerOne) === boardNumResult()
-		) {
-			playerResult('Player 2');
+		/* const playerResult = (param) => {
+			let p1 = () => {
+				winnerResult.innerHTML = 'Player 1 won the game';
+			};
+			let p2 = () => {
+				winnerResult.innerHTML = 'Player 2 won the game';
+			};
+
+			return param === 'Player 2' ? p2 : p1;
+		}; */
+
+		// && gameBoard.getBoard(playerOne) === boardNumResult()
+
+		if (player1.getSign() === 'X') {
+			winnerResult.innerHTML = 'Player 1 won the game';
+			gameBoard.getBoard(playerOne);
+		} else if (player2.getSign() === 'O') {
+			winnerResult.innerHTML = 'Player 2 won the game';
+			gameBoard.getBoard(playerTwo);
+		} else {
+			winnerResult.result = 'Draw';
 		}
 	};
 
