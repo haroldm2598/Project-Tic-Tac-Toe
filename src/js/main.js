@@ -7,6 +7,8 @@ const Player = (sign) => {
 
 const gameBoard = (() => {
 	const board = ['', '', '', '', '', '', '', '', ''];
+	const playerOne = [];
+	const playerTwo = [];
 
 	const setBoard = (sign, index) => {
 		for (let i = 0; i < sign.length; i++) {
@@ -15,20 +17,38 @@ const gameBoard = (() => {
 		console.log(board);
 	};
 
-	const getBoard = (resultArr) => {
-		let result;
-
+	const getBoard = () => {
 		board.forEach((element, index) => {
-			if (element === 'X' || element === 'O') {
-				resultArr.push(index);
+			if (element === 'X') {
+				playerOne.push(index);
+			}
+
+			if (element.includes('O')) {
+				playerTwo.push(index);
 			}
 		});
 
-		return console.log(resultArr);
-		// result = console.log([...new Set(resultArr)]);
+		let p1 = console.log([...new Set(playerOne)]);
+		let p2 = console.log([...new Set(playerTwo)]);
 
-		// return result;
+		return { p1, p2 };
 	};
+
+	// BACKUPP
+	// const getBoard = (resultArr) => {
+	// 	let result;
+
+	// 	board.forEach((element, index) => {
+	// 		if (element === 'X' || element === 'O') {
+	// 			resultArr.push(index);
+	// 		}
+	// 	});
+
+	// 	// return console.log(resultArr);
+	// 	result = console.log([...new Set(resultArr)]);
+
+	// 	return result;
+	// };
 
 	const resetBoard = () => {
 		for (let i = 0; i < board.length; i++) {
@@ -60,6 +80,7 @@ const displayController = (() => {
 				playerTurn.innerHTML = next;
 				element.appendChild(playerTurn);
 				gameBoard.setBoard(next, index);
+
 				gameController.winningCondition();
 			}
 			// ,{ once: false }
@@ -130,8 +151,6 @@ const gameController = (() => {
 
 	const winningCondition = () => {
 		// try check project ideas(object literal) in CODESANDBOX.IO
-		const playerOne = [];
-		const playerTwo = [];
 		const boardNumbers = [
 			[0, 1, 2],
 			[3, 4, 5],
@@ -143,9 +162,11 @@ const gameController = (() => {
 			[2, 4, 6]
 		];
 
-		const boardNumResult = () => {
-			boardNumbers.filter((e) => console.log(e.some((e) => console.log(e))));
-		};
+		const boardNumResult = (() => {
+			// boardNumbers.filter((e) => console.log(e.some((e) => e === [0, 1, 2])));
+			return boardNumbers.some((element) => console.log([0, 1, 2] === element));
+			// gameBoard.getBoard()['p1'];
+		})();
 
 		/* const playerResult = (param) => {
 			let p1 = () => {
@@ -162,10 +183,8 @@ const gameController = (() => {
 
 		if (player1.getSign() === 'X') {
 			winnerResult.innerHTML = 'Player 1 won the game';
-			gameBoard.getBoard(playerOne);
 		} else if (player2.getSign() === 'O') {
 			winnerResult.innerHTML = 'Player 2 won the game';
-			gameBoard.getBoard(playerTwo);
 		} else {
 			winnerResult.result = 'Draw';
 		}

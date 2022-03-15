@@ -164,6 +164,7 @@ Progress // TARGET COMPLETION 2weeks or less
 - In winningCondition code a logical operator inside it
 - Loop the winningCondition must try use filter and some Array methods
 
-#### March 14
+#### March 14 - March 15
 
 - push into new two arrays and result will be determine by bordnumresult with filter and some
+- Classifying group of array of players is done
