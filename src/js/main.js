@@ -151,21 +151,28 @@ const gameController = (() => {
 
 	const winningCondition = () => {
 		// try check project ideas(object literal) in CODESANDBOX.IO
-		const boardNumbers = [
-			[0, 1, 2],
-			[3, 4, 5],
-			[6, 7, 8],
-			[0, 3, 6],
-			[1, 4, 7],
-			[2, 5, 8],
-			[0, 4, 8],
-			[2, 4, 6]
-		];
-
 		const boardNumResult = (() => {
+			const boardNumbers = [
+				[0, 1, 2],
+				[3, 4, 5],
+				[6, 7, 8],
+				[0, 3, 6],
+				[1, 4, 7],
+				[2, 5, 8],
+				[0, 4, 8],
+				[2, 4, 6]
+			];
 			// boardNumbers.filter((e) => console.log(e.some((e) => e === [0, 1, 2])));
-			return boardNumbers.some((element) => console.log([0, 1, 2] === element));
-			// gameBoard.getBoard()['p1'];
+			// return boardNumbers.some((element) => {
+			// 	return console.log([0, 1, 2] === element);
+			// });
+
+			// return boardNumbers.filter((element) => element.includes([0, 1, 2]));
+
+			// console.log(JSON.stringify(boardNumbers));
+			return boardNumbers.map((e) =>
+				console.log(JSON.stringify(e) === JSON.stringify([2, 4, 6]))
+			);
 		})();
 
 		/* const playerResult = (param) => {
@@ -181,13 +188,15 @@ const gameController = (() => {
 
 		// && gameBoard.getBoard(playerOne) === boardNumResult()
 
-		if (player1.getSign() === 'X') {
-			winnerResult.innerHTML = 'Player 1 won the game';
-		} else if (player2.getSign() === 'O') {
-			winnerResult.innerHTML = 'Player 2 won the game';
-		} else {
-			winnerResult.result = 'Draw';
-		}
+		/*
+			if (player1.getSign() === 'X') {
+				winnerResult.innerHTML = 'Player 1 won the game';
+			} else if (player2.getSign() === 'O') {
+				winnerResult.innerHTML = 'Player 2 won the game';
+			} else {
+				winnerResult.result = 'Draw';
+			}
+		*/
 	};
 
 	const resetBoard = () => {
