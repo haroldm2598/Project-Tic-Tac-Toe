@@ -10,3 +10,6 @@
 - COMPARING ARRAY OF ARRAYS
   https://stackoverflow.com/questions/45152060/how-to-compare-an-array-to-an-array-of-arrays
   https://www.30secondsofcode.org/articles/s/javascript-array-comparison
+
+- FILTERING ARRAYS OF OBJECTS WITH INCLUDES
+  https://www.youtube.com/watch?v=m7-tSUYZRXY
