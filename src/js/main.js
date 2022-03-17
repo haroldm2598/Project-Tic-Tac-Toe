@@ -8,7 +8,7 @@ const Player = (sign) => {
 const gameBoard = (() => {
 	const board = ['', '', '', '', '', '', '', '', ''];
 	const playerOne = [];
-	const playerTwo = [];
+	// const playerTwo = [];
 
 	const setBoard = (sign, index) => {
 		for (let i = 0; i < sign.length; i++) {
@@ -23,15 +23,15 @@ const gameBoard = (() => {
 				playerOne.push(index);
 			}
 
-			if (element.includes('O')) {
-				playerTwo.push(index);
-			}
+			// if (element.includes('O')) {
+			// 	playerTwo.push(index);
+			// }
 		});
 
 		let p1 = console.log([...new Set(playerOne)]);
-		let p2 = console.log([...new Set(playerTwo)]);
+		// let p2 = console.log([...new Set(playerTwo)]);
 
-		return { p1, p2 };
+		return { p1 };
 	};
 
 	// BACKUPP
@@ -80,8 +80,10 @@ const displayController = (() => {
 				playerTurn.innerHTML = next;
 				element.appendChild(playerTurn);
 				gameBoard.setBoard(next, index);
-
 				gameController.winningCondition();
+				// gameController
+				// 	.winningCondition()
+				// 	.boardNumResult(gameBoard.getBoard()['p1']);
 			}
 			// ,{ once: false }
 			// if gameBoard logic is working try this code
@@ -151,7 +153,7 @@ const gameController = (() => {
 
 	const winningCondition = () => {
 		// try check project ideas(object literal) in CODESANDBOX.IO
-		const boardNumResult = (() => {
+		const boardNumResult = ((params) => {
 			const boardNumbers = [
 				[0, 1, 2],
 				[3, 4, 5],
@@ -167,12 +169,23 @@ const gameController = (() => {
 			// 	return console.log([0, 1, 2] === element);
 			// });
 
-			// return boardNumbers.filter((element) => element.includes([0, 1, 2]));
-
 			// console.log(JSON.stringify(boardNumbers));
-			return boardNumbers.map((e) =>
-				console.log(JSON.stringify(e) === JSON.stringify([2, 4, 6]))
+			// return boardNumbers.map((e) =>
+			// 	console.log(JSON.stringify(e) === JSON.stringify([2, 4, 6]))
+			// );
+
+			// return boardNumbers.filter((element) =>
+			// 	element.includes(element).some(() => {
+			// 		return;
+			// 	})
+			// );
+
+			const testingArr = boardNumbers.filter(
+				(winningElement) =>
+					JSON.stringify(winningElement) === JSON.stringify([0, 1, 2])
 			);
+
+			console.log(testingArr);
 		})();
 
 		/* const playerResult = (param) => {
@@ -197,6 +210,7 @@ const gameController = (() => {
 				winnerResult.result = 'Draw';
 			}
 		*/
+		// return { boardNumResult };
 	};
 
 	const resetBoard = () => {

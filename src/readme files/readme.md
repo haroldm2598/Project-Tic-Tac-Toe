@@ -170,3 +170,4 @@ Progress // TARGET COMPLETION 2weeks or less
 - Classifying group of array of players is done
 - Compare array of arrays (links)
 - Maybe comparing arrays must convert into JSON.stringify
+- Maybe try to get the first player for testing purposes
