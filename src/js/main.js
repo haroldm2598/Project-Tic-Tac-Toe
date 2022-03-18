@@ -28,27 +28,11 @@ const gameBoard = (() => {
 			// }
 		});
 
-		let p1 = console.log([...new Set(playerOne)]);
+		let p1 = JSON.stringify([...new Set(playerOne)]);
 		// let p2 = console.log([...new Set(playerTwo)]);
 
 		return { p1 };
 	};
-
-	// BACKUPP
-	// const getBoard = (resultArr) => {
-	// 	let result;
-
-	// 	board.forEach((element, index) => {
-	// 		if (element === 'X' || element === 'O') {
-	// 			resultArr.push(index);
-	// 		}
-	// 	});
-
-	// 	// return console.log(resultArr);
-	// 	result = console.log([...new Set(resultArr)]);
-
-	// 	return result;
-	// };
 
 	const resetBoard = () => {
 		for (let i = 0; i < board.length; i++) {
@@ -64,31 +48,19 @@ const gameBoard = (() => {
 const displayController = (() => {
 	const restartBtn = document.querySelector('#mainBtn');
 	let mainBox = document.querySelectorAll('#mainBox');
-	// if gameBoard logic is working try this code
-	// let isTrigger;
 
 	mainBox.forEach((element, index) => {
 		const playerTurn = document.createElement('p');
 		playerTurn.setAttribute('class', 'main__box--para');
 		playerTurn.setAttribute('id', 'mainBoxPara');
 
-		element.addEventListener(
-			'click',
-			() => {
-				let next = gameController.changingPlayers();
-				// let stringConvert = JSON.stringify(index);
-				playerTurn.innerHTML = next;
-				element.appendChild(playerTurn);
-				gameBoard.setBoard(next, index);
-				gameController.winningCondition();
-				// gameController
-				// 	.winningCondition()
-				// 	.boardNumResult(gameBoard.getBoard()['p1']);
-			}
-			// ,{ once: false }
-			// if gameBoard logic is working try this code
-			// testing(isTrigger)
-		);
+		element.addEventListener('click', () => {
+			let next = gameController.changingPlayers();
+			playerTurn.innerHTML = next;
+			element.appendChild(playerTurn);
+			gameBoard.setBoard(next, index);
+			gameController.winningCondition();
+		});
 	});
 
 	restartBtn.addEventListener('click', () => {
@@ -101,24 +73,7 @@ const displayController = (() => {
 
 		gameBoard.resetBoard();
 		gameController.resetBoard();
-		// if gameBoard logic is working try this code
-		// console.log(mainBox.childNodes.length);
 	});
-
-	// if gameBoard logic is working try this code
-	// function testing(isTrigger) {
-	// 	/*
-	// 		mainBox.childNodes.length if empty therefore false and true afterwards
-	// 		mainBox should use foreach methods in order to work with it
-	// 		problem if using foreach having scope and closure problem therefore
-	// 		variable isn't getting the value of it from conditional statement
-	// 		childNodes only determine if there Attribute , Comments, Text and Elements
-	// 	*/
-	// 	return isTrigger ? { once: true } : { once: false };
-	// }
-	// function testing2() {
-	// 	return mainBox.childNodes.length > 0 ? true : false;
-	// }
 
 	return {};
 })();
@@ -152,8 +107,8 @@ const gameController = (() => {
 	};
 
 	const winningCondition = () => {
-		// try check project ideas(object literal) in CODESANDBOX.IO
-		const boardNumResult = ((params) => {
+		const boardNumResult = (() => {
+			const testingParams = gameBoard.getBoard()['p1'];
 			const boardNumbers = [
 				[0, 1, 2],
 				[3, 4, 5],
@@ -164,53 +119,11 @@ const gameController = (() => {
 				[0, 4, 8],
 				[2, 4, 6]
 			];
-			// boardNumbers.filter((e) => console.log(e.some((e) => e === [0, 1, 2])));
-			// return boardNumbers.some((element) => {
-			// 	return console.log([0, 1, 2] === element);
-			// });
 
-			// console.log(JSON.stringify(boardNumbers));
-			// return boardNumbers.map((e) =>
-			// 	console.log(JSON.stringify(e) === JSON.stringify([2, 4, 6]))
-			// );
+			let testingArr = boardNumbers[1];
 
-			// return boardNumbers.filter((element) =>
-			// 	element.includes(element).some(() => {
-			// 		return;
-			// 	})
-			// );
-
-			const testingArr = boardNumbers.filter(
-				(winningElement) =>
-					JSON.stringify(winningElement) === JSON.stringify([0, 1, 2])
-			);
-
-			console.log(testingArr);
+			console.log(JSON.stringify(testingArr) === testingParams - 1);
 		})();
-
-		/* const playerResult = (param) => {
-			let p1 = () => {
-				winnerResult.innerHTML = 'Player 1 won the game';
-			};
-			let p2 = () => {
-				winnerResult.innerHTML = 'Player 2 won the game';
-			};
-
-			return param === 'Player 2' ? p2 : p1;
-		}; */
-
-		// && gameBoard.getBoard(playerOne) === boardNumResult()
-
-		/*
-			if (player1.getSign() === 'X') {
-				winnerResult.innerHTML = 'Player 1 won the game';
-			} else if (player2.getSign() === 'O') {
-				winnerResult.innerHTML = 'Player 2 won the game';
-			} else {
-				winnerResult.result = 'Draw';
-			}
-		*/
-		// return { boardNumResult };
 	};
 
 	const resetBoard = () => {
@@ -220,14 +133,3 @@ const gameController = (() => {
 
 	return { changingPlayers, resetBoard, winningCondition };
 })();
-
-// Testing TypeOf
-// const getType = (src) =>
-// 	({}.toString
-// 		.call(src)
-// 		.match(/\s([a-zA-Z]+)/)[1]
-// 		.toLowerCase());
-
-// const typeOfTest = (() => {
-// 	console.log(getType(gameController.winningCondition()));
-// })();

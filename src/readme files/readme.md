@@ -164,10 +164,11 @@ Progress // TARGET COMPLETION 2weeks or less
 - In winningCondition code a logical operator inside it
 - Loop the winningCondition must try use filter and some Array methods
 
-#### March 14 - March 16
+#### March 14 - March 18
 
 - push into new two arrays and result will be determine by bordnumresult with filter and some
 - Classifying group of array of players is done
 - Compare array of arrays (links)
 - Maybe comparing arrays must convert into JSON.stringify
 - Maybe try to get the first player for testing purposes
+- Try to manipulate two dimensional array of an arrays in order to get the value itself
