@@ -172,3 +172,7 @@ Progress // TARGET COMPLETION 2weeks or less
 - Maybe comparing arrays must convert into JSON.stringify
 - Maybe try to get the first player for testing purposes
 - Try to manipulate two dimensional array of an arrays in order to get the value itself
+
+### March 22
+
+- Problem solve using filter and includes with inside using another filter and length

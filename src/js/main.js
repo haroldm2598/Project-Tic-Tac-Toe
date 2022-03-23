@@ -107,7 +107,7 @@ const gameController = (() => {
 	};
 
 	const winningCondition = () => {
-		const boardNumResult = (() => {
+		const boardNumResult = () => {
 			const testingParams = gameBoard.getBoard()['p1'];
 			const boardNumbers = [
 				[0, 1, 2],
@@ -120,10 +120,23 @@ const gameController = (() => {
 				[2, 4, 6]
 			];
 
-			let testingArr = boardNumbers[1];
+			let testingArr = boardNumbers.filter(
+				(combination) =>
+					combination.filter((x) => testingParams.includes(x)).length === 3
+			);
 
-			console.log(JSON.stringify(testingArr) === testingParams - 1);
-		})();
+			console.log(testingArr);
+			// TESTING PURPOSE IS WORKING BUT NOT COMPLETE PURE STATIC
+			// const testingArr = boardNumbers[1];
+			// const result = JSON.stringify(testingArr) === testingParams;
+
+			// return result;
+		};
+
+		boardNumResult();
+		// if (true === boardNumResult()) {
+		// 	winnerResult.innerHTML = `Player 1 Won `;
+		// }
 	};
 
 	const resetBoard = () => {
