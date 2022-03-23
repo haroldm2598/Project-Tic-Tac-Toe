@@ -8,7 +8,7 @@ const Player = (sign) => {
 const gameBoard = (() => {
 	const board = ['', '', '', '', '', '', '', '', ''];
 	const playerOne = [];
-	// const playerTwo = [];
+	const playerTwo = [];
 
 	const setBoard = (sign, index) => {
 		for (let i = 0; i < sign.length; i++) {
@@ -23,23 +23,21 @@ const gameBoard = (() => {
 				playerOne.push(index);
 			}
 
-			// if (element.includes('O')) {
-			// 	playerTwo.push(index);
-			// }
+			if (element.includes('O')) {
+				playerTwo.push(index);
+			}
 		});
 
 		let p1 = JSON.stringify([...new Set(playerOne)]);
-		// let p2 = console.log([...new Set(playerTwo)]);
+		let p2 = JSON.stringify([...new Set(playerTwo)]);
 
-		return { p1 };
+		return { p1, p2 };
 	};
 
 	const resetBoard = () => {
 		for (let i = 0; i < board.length; i++) {
 			board[i] = '';
 		}
-
-		// boardResult.length = [];
 	};
 
 	return { setBoard, getBoard, resetBoard };
@@ -107,8 +105,7 @@ const gameController = (() => {
 	};
 
 	const winningCondition = () => {
-		const boardNumResult = () => {
-			const testingParams = gameBoard.getBoard()['p1'];
+		const boardNumResult = (params) => {
 			const boardNumbers = [
 				[0, 1, 2],
 				[3, 4, 5],
@@ -122,21 +119,15 @@ const gameController = (() => {
 
 			let testingArr = boardNumbers.filter(
 				(combination) =>
-					combination.filter((x) => testingParams.includes(x)).length === 3
+					combination.filter((x) => params.includes(x)).length === 3
 			);
 
-			console.log(testingArr);
-			// TESTING PURPOSE IS WORKING BUT NOT COMPLETE PURE STATIC
-			// const testingArr = boardNumbers[1];
-			// const result = JSON.stringify(testingArr) === testingParams;
-
-			// return result;
+			return console.log(testingArr);
 		};
 
-		boardNumResult();
-		// if (true === boardNumResult()) {
-		// 	winnerResult.innerHTML = `Player 1 Won `;
-		// }
+		if ([] !== boardNumResult(gameBoard.getBoard()['p1'])) {
+			winnerResult.innerHTML = `Player 1 Won `;
+		}
 	};
 
 	const resetBoard = () => {

@@ -15,3 +15,6 @@
   https://www.youtube.com/watch?v=m7-tSUYZRXY
 
 - TWO DIMENSIONAL ARRAYS TO MANIPULATE
+
+- CHECK IF NOT EMPTY WILL BE TRUE
+  https://stackoverflow.com/questions/4361585/how-to-check-if-a-variable-is-not-null

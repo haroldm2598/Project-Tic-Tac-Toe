@@ -173,6 +173,7 @@ Progress // TARGET COMPLETION 2weeks or less
 - Maybe try to get the first player for testing purposes
 - Try to manipulate two dimensional array of an arrays in order to get the value itself
 
-### March 22
+### March 22 - March 23
 
 - Problem solve using filter and includes with inside using another filter and length
+- Using logical comparision check if the array if empty or not
