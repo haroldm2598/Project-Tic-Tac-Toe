@@ -122,17 +122,25 @@ const gameController = (() => {
 					combination.filter((x) => params.includes(x)).length === 3
 			);
 
-			return console.log(testingArr);
+			return testingArr.length;
 		};
 
-		if ([] !== boardNumResult(gameBoard.getBoard()['p1'])) {
-			winnerResult.innerHTML = `Player 1 Won `;
+		if (boardNumResult(gameBoard.getBoard()['p1']) === 1) {
+			winnerResult.innerHTML = `Player 1 Won`;
+		} else if (boardNumResult(gameBoard.getBoard()['p2']) === 1) {
+			winnerResult.innerHTML = `Player 2 Won`;
+		} else if (
+			boardNumResult(gameBoard.getBoard()['p1']) &&
+			boardNumResult(gameBoard.getBoard()['p2']) === 0
+		) {
+			winnerResult.innerHTML = `Draw`;
 		}
 	};
 
 	const resetBoard = () => {
 		playerTurn.removeAttribute('class', 'playerInfo__turn');
 		playerTurn.textContent = '';
+		winnerResult.textContent = '';
 	};
 
 	return { changingPlayers, resetBoard, winningCondition };

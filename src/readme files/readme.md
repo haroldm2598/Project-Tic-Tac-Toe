@@ -177,3 +177,5 @@ Progress // TARGET COMPLETION 2weeks or less
 
 - Problem solve using filter and includes with inside using another filter and length
 - Using logical comparision check if the array if empty or not
+- Using length and compare. It works
+- Problem always present how to display if the game already done and no winners for draws
