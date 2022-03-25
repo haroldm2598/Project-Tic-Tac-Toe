@@ -173,9 +173,10 @@ Progress // TARGET COMPLETION 2weeks or less
 - Maybe try to get the first player for testing purposes
 - Try to manipulate two dimensional array of an arrays in order to get the value itself
 
-### March 22 - March 23
+### March 22 - March 25
 
 - Problem solve using filter and includes with inside using another filter and length
 - Using logical comparision check if the array if empty or not
 - Using length and compare. It works
 - Problem always present how to display if the game already done and no winners for draws
+- Check the array length of both player if both of them have 3 and 4 length therefore must be draw

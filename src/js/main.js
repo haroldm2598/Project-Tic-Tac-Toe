@@ -14,7 +14,7 @@ const gameBoard = (() => {
 		for (let i = 0; i < sign.length; i++) {
 			board.splice(index, 1, sign[i]);
 		}
-		console.log(board);
+		// console.log(board);
 	};
 
 	const getBoard = () => {
@@ -28,8 +28,11 @@ const gameBoard = (() => {
 			}
 		});
 
-		let p1 = JSON.stringify([...new Set(playerOne)]);
-		let p2 = JSON.stringify([...new Set(playerTwo)]);
+		// let p1 = JSON.stringify([...new Set(playerOne)]);
+		// let p2 = JSON.stringify([...new Set(playerTwo)]);
+
+		let p1 = [...new Set(playerOne)];
+		let p2 = [...new Set(playerTwo)];
 
 		return { p1, p2 };
 	};
@@ -52,13 +55,17 @@ const displayController = (() => {
 		playerTurn.setAttribute('class', 'main__box--para');
 		playerTurn.setAttribute('id', 'mainBoxPara');
 
-		element.addEventListener('click', () => {
-			let next = gameController.changingPlayers();
-			playerTurn.innerHTML = next;
-			element.appendChild(playerTurn);
-			gameBoard.setBoard(next, index);
-			gameController.winningCondition();
-		});
+		element.addEventListener(
+			'click',
+			() => {
+				let next = gameController.changingPlayers();
+				playerTurn.innerHTML = next;
+				element.appendChild(playerTurn);
+				gameBoard.setBoard(next, index);
+				gameController.winningCondition();
+			},
+			{ once: true }
+		);
 	});
 
 	restartBtn.addEventListener('click', () => {
@@ -72,8 +79,6 @@ const displayController = (() => {
 		gameBoard.resetBoard();
 		gameController.resetBoard();
 	});
-
-	return {};
 })();
 
 const gameController = (() => {
@@ -105,6 +110,9 @@ const gameController = (() => {
 	};
 
 	const winningCondition = () => {
+		const playerOne = gameBoard.getBoard()['p1'];
+		const playerTwo = gameBoard.getBoard()['p2'];
+
 		const boardNumResult = (params) => {
 			const boardNumbers = [
 				[0, 1, 2],
@@ -125,14 +133,11 @@ const gameController = (() => {
 			return testingArr.length;
 		};
 
-		if (boardNumResult(gameBoard.getBoard()['p1']) === 1) {
+		if (boardNumResult(playerOne) === 1) {
 			winnerResult.innerHTML = `Player 1 Won`;
-		} else if (boardNumResult(gameBoard.getBoard()['p2']) === 1) {
+		} else if (boardNumResult(playerTwo) === 1) {
 			winnerResult.innerHTML = `Player 2 Won`;
-		} else if (
-			boardNumResult(gameBoard.getBoard()['p1']) &&
-			boardNumResult(gameBoard.getBoard()['p2']) === 0
-		) {
+		} else if (playerOne.length === 5 && playerTwo.length === 4) {
 			winnerResult.innerHTML = `Draw`;
 		}
 	};
@@ -145,3 +150,7 @@ const gameController = (() => {
 
 	return { changingPlayers, resetBoard, winningCondition };
 })();
+
+window.addEventListener('click', () => {
+	console.log(this);
+});
