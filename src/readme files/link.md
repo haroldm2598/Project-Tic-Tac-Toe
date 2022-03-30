@@ -20,3 +20,6 @@
   https://stackoverflow.com/questions/4361585/how-to-check-if-a-variable-is-not-null
   https://stackoverflow.com/questions/24403732/how-to-check-if-array-is-empty-or-does-not-exist
   https://www.freecodecamp.org/news/check-if-javascript-array-is-empty-or-not-with-length/#:~:text=To%20check%20if%20an%20array,it%20is%20empty%20or%20not.
+
+- FUNCTION UTILITIES
+  https://www.youtube.com/watch?v=EoUIS2PxKCs

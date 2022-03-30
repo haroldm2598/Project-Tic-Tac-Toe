@@ -14,7 +14,7 @@ const gameBoard = (() => {
 		for (let i = 0; i < sign.length; i++) {
 			board.splice(index, 1, sign[i]);
 		}
-		// console.log(board);
+		console.log(board);
 	};
 
 	const getBoard = () => {
@@ -50,23 +50,8 @@ const displayController = (() => {
 	const restartBtn = document.querySelector('#mainBtn');
 	let mainBox = document.querySelectorAll('#mainBox');
 
-	restartBtn.addEventListener('click', () => {
-		gameBoard.resetBoard();
-		gameController.resetBoard();
-		eventOptions(false);
-
-		mainBox.forEach(() => {
-			const paraId = document.querySelector('#mainBoxPara');
-			if (document.body.contains(paraId)) {
-				paraId.remove();
-			}
-		});
-	});
-
-	const eventOptions = (round = true) => {
-		// let round = true;
-
-		return { once: round };
+	const globalEventListener = (parent = document, type, callBack, options) => {
+		parent.addEventListener(type, callBack, options);
 	};
 
 	mainBox.forEach((element, index) => {
@@ -82,7 +67,25 @@ const displayController = (() => {
 			gameController.winningCondition();
 		};
 
-		element.addEventListener('click', eventListener, eventOptions());
+		const eventOptions = (round = true) => {
+			return { once: round };
+		};
+
+		const eventListenerRestart = () => {
+			gameBoard.resetBoard();
+			gameController.resetBoard();
+
+			mainBox.forEach(() => {
+				const paraId = document.querySelector('#mainBoxPara');
+				if (document.body.contains(paraId)) {
+					paraId.remove();
+				}
+			});
+		};
+
+		globalEventListener(restartBtn, 'click', eventListenerRestart);
+
+		globalEventListener(element, 'click', eventListener, eventOptions());
 	});
 })();
 
@@ -155,7 +158,3 @@ const gameController = (() => {
 
 	return { changingPlayers, resetBoard, winningCondition };
 })();
-
-// window.addEventListener('click', () => {
-// 	console.log(this);
-// });

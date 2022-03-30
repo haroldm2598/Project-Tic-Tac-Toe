@@ -241,3 +241,34 @@ const gameController = (() => {
 
 	return { changingPlayers, resetBoard, winningCondition };
 })();
+
+// ------------------------ BACKUP FOR DSIPLAYCONTROLLER AREA WORKING ---------------------------------
+
+// restartBtn.addEventListener('click', () => {
+// 	gameBoard.resetBoard();
+// 	gameController.resetBoard();
+// 	eventOptions(false);
+
+// 	mainBox.forEach(() => {
+// 		const paraId = document.querySelector('#mainBoxPara');
+// 		if (document.body.contains(paraId)) {
+// 			paraId.remove();
+// 		}
+// 	});
+// });
+
+// mainBox.forEach((element, index) => {
+// 	const playerTurn = document.createElement('p');
+// 	playerTurn.setAttribute('class', 'main__box--para');
+// 	playerTurn.setAttribute('id', 'mainBoxPara');
+
+// 	const eventListener = () => {
+// 		let next = gameController.changingPlayers();
+// 		playerTurn.innerHTML = next;
+// 		element.appendChild(playerTurn);
+// 		gameBoard.setBoard(next, index);
+// 		gameController.winningCondition();
+// 	};
+
+// 	element.addEventListener('click', eventListener, eventOptions());
+// });
