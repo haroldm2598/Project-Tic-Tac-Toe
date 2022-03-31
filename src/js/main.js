@@ -71,7 +71,7 @@ const displayController = (() => {
 			return { once: round };
 		};
 
-		const eventListenerRestart = () => {
+		const eventListenerRestart = async () => {
 			gameBoard.resetBoard();
 			gameController.resetBoard();
 
@@ -147,6 +147,8 @@ const gameController = (() => {
 			winnerResult.innerHTML = `Player 2 Won`;
 		} else if (playerOne.length === 5 && playerTwo.length === 4) {
 			winnerResult.innerHTML = `Draw`;
+		} else {
+			winnerResult.innerHTML = null;
 		}
 	};
 

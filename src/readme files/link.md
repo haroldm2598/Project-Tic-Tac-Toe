@@ -23,3 +23,8 @@
 
 - FUNCTION UTILITIES
   https://www.youtube.com/watch?v=EoUIS2PxKCs
+
+https://www.geeksforgeeks.org/why-javascript-is-a-single-thread-language-that-can-be-non-blocking/#:~:text=JavaScript%20is%20a%20single%2Dthreaded%20language%20because%20while%20running%20code,it%20is%20synchronous%20in%20nature.
+https://stackoverflow.com/questions/8058612/does-calling-settimeout-clear-the-callstack
+https://www.freecodecamp.org/news/understanding-the-javascript-call-stack-861e41ae61d4/
+https://javascript.info/async-await
