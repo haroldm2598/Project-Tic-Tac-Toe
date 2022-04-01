@@ -28,9 +28,6 @@ const gameBoard = (() => {
 			}
 		});
 
-		// let p1 = JSON.stringify([...new Set(playerOne)]);
-		// let p2 = JSON.stringify([...new Set(playerTwo)]);
-
 		let p1 = [...new Set(playerOne)];
 		let p2 = [...new Set(playerTwo)];
 
@@ -38,9 +35,15 @@ const gameBoard = (() => {
 	};
 
 	const resetBoard = () => {
-		for (let i = 0; i < board.length; i++) {
-			board[i] = '';
-		}
+		const forReset = (params) => {
+			for (let i = 0; i < params.length; i++) {
+				params[i] = '';
+			}
+		};
+
+		forReset(board);
+		forReset(playerOne);
+		forReset(playerTwo);
 	};
 
 	return { setBoard, getBoard, resetBoard };
@@ -67,26 +70,26 @@ const displayController = (() => {
 			gameController.winningCondition();
 		};
 
-		const eventOptions = (round = true) => {
+		const eventOptions = (round = false) => {
 			return { once: round };
 		};
 
-		const eventListenerRestart = async () => {
-			gameBoard.resetBoard();
-			gameController.resetBoard();
-
-			mainBox.forEach(() => {
-				const paraId = document.querySelector('#mainBoxPara');
-				if (document.body.contains(paraId)) {
-					paraId.remove();
-				}
-			});
-		};
-
-		globalEventListener(restartBtn, 'click', eventListenerRestart);
-
 		globalEventListener(element, 'click', eventListener, eventOptions());
 	});
+
+	const eventListenerRestart = async () => {
+		gameBoard.resetBoard();
+		gameController.resetBoard();
+
+		mainBox.forEach(() => {
+			const paraId = document.querySelector('#mainBoxPara');
+			if (document.body.contains(paraId)) {
+				paraId.remove();
+			}
+		});
+	};
+
+	globalEventListener(restartBtn, 'click', eventListenerRestart);
 })();
 
 const gameController = (() => {
@@ -113,6 +116,7 @@ const gameController = (() => {
 
 		return (() => {
 			round = !round;
+			console.log(round);
 			return round ? PlayerOne()[0] : PlayerTwo()[0];
 		})();
 	};
@@ -141,18 +145,30 @@ const gameController = (() => {
 			return testingArr.length;
 		};
 
-		if (boardNumResult(playerOne) === 1) {
-			winnerResult.innerHTML = `Player 1 Won`;
-		} else if (boardNumResult(playerTwo) === 1) {
-			winnerResult.innerHTML = `Player 2 Won`;
-		} else if (playerOne.length === 5 && playerTwo.length === 4) {
-			winnerResult.innerHTML = `Draw`;
-		} else {
-			winnerResult.innerHTML = null;
-		}
+		const testingFunction = (() => {
+			if (boardNumResult(playerOne) === 1) {
+				winnerResult.innerHTML = `Player 1 Won`;
+			} else if (boardNumResult(playerTwo) === 1) {
+				winnerResult.innerHTML = `Player 2 Won`;
+			} else if (playerOne.length === 5 && playerTwo.length === 4) {
+				winnerResult.innerHTML = `Draw`;
+			} else {
+				winnerResult.innerHTML = null;
+			}
+		})();
 	};
 
 	const resetBoard = () => {
+		let testing = changingPlayers;
+
+		if (testing === 'false') {
+			console.log('OMEGA LUL');
+		}
+
+		// else {
+		// 	changingPlayers();
+		// }
+
 		playerTurn.removeAttribute('class', 'playerInfo__turn');
 		playerTurn.textContent = '';
 		winnerResult.textContent = '';

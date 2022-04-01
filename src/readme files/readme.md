@@ -181,9 +181,10 @@ Progress // TARGET COMPLETION 2weeks or less
 - Problem always present how to display if the game already done and no winners for draws
 - Check the array length of both player if both of them have 3 and 4 length therefore must be draw
 
-### March 29 - March 30
+### March 29 - April 1
 
 - Create a function where you will store the event options
 - Try to make switching function where it will change the options
 - add some setTimeout in order to change immediately the options
 - add some callBack Function inside mainBox therefore it will pass to restart button and restart button will have setTimeout
+- Reset winning condition but clearing the array of the players
