@@ -51,45 +51,54 @@ const gameBoard = (() => {
 
 const displayController = (() => {
 	const restartBtn = document.querySelector('#mainBtn');
-	let mainBox = document.querySelectorAll('#mainBox');
+	const mainBox = document.querySelectorAll('#mainBox');
 
 	const globalEventListener = (parent = document, type, callBack, options) => {
 		parent.addEventListener(type, callBack, options);
 	};
 
-	mainBox.forEach((element, index) => {
-		const playerTurn = document.createElement('p');
-		playerTurn.setAttribute('class', 'main__box--para');
-		playerTurn.setAttribute('id', 'mainBoxPara');
+	const testingFunction = () => {
+		mainBox.forEach((element, index) => {
+			const playerTurn = document.createElement('p');
+			playerTurn.setAttribute('class', 'main__box--para');
+			playerTurn.setAttribute('id', 'mainBoxPara');
 
-		const eventListener = () => {
-			let next = gameController.changingPlayers();
-			playerTurn.innerHTML = next;
-			element.appendChild(playerTurn);
-			gameBoard.setBoard(next, index);
-			gameController.winningCondition();
-		};
+			const eventListener = () => {
+				let next = gameController.changingPlayers();
+				playerTurn.innerHTML = next;
+				element.appendChild(playerTurn);
+				gameBoard.setBoard(next, index);
+				gameController.winningCondition();
+			};
 
-		const eventOptions = (round = false) => {
-			return { once: round };
-		};
+			const eventOptions = (round = false) => {
+				return { once: round };
+			};
 
-		globalEventListener(element, 'click', eventListener, eventOptions());
-	});
-
-	const eventListenerRestart = async () => {
-		gameBoard.resetBoard();
-		gameController.resetBoard();
-
-		mainBox.forEach(() => {
-			const paraId = document.querySelector('#mainBoxPara');
-			if (document.body.contains(paraId)) {
-				paraId.remove();
-			}
+			globalEventListener(element, 'click', eventListener, eventOptions());
 		});
 	};
 
-	globalEventListener(restartBtn, 'click', eventListenerRestart);
+	const testingRestart = () => {
+		const eventListenerRestart = () => {
+			gameBoard.resetBoard();
+			gameController.resetBoard();
+
+			mainBox.forEach(() => {
+				const paraId = document.querySelector('#mainBoxPara');
+				if (document.body.contains(paraId)) {
+					paraId.remove();
+				}
+			});
+
+			testingFunction();
+		};
+
+		globalEventListener(restartBtn, 'click', eventListenerRestart);
+	};
+
+	testingFunction();
+	testingRestart();
 })();
 
 const gameController = (() => {
@@ -116,7 +125,6 @@ const gameController = (() => {
 
 		return (() => {
 			round = !round;
-			console.log(round);
 			return round ? PlayerOne()[0] : PlayerTwo()[0];
 		})();
 	};
@@ -137,15 +145,15 @@ const gameController = (() => {
 				[2, 4, 6]
 			];
 
-			let testingArr = boardNumbers.filter(
+			let result = boardNumbers.filter(
 				(combination) =>
 					combination.filter((x) => params.includes(x)).length === 3
 			);
 
-			return testingArr.length;
+			return result.length;
 		};
 
-		const testingFunction = (() => {
+		const conditionFunc = (() => {
 			if (boardNumResult(playerOne) === 1) {
 				winnerResult.innerHTML = `Player 1 Won`;
 			} else if (boardNumResult(playerTwo) === 1) {
@@ -159,14 +167,16 @@ const gameController = (() => {
 	};
 
 	const resetBoard = () => {
-		let testing = changingPlayers;
+		let result = changingPlayers();
 
-		if (testing === 'false') {
-			console.log('OMEGA LUL');
+		if (result === 'X') {
+			changingPlayers();
 		}
 
-		// else {
-		// 	changingPlayers();
+		// REFERRENCE
+		// if (resetBoard) {
+		// 	console.log(`${testing === !'X'} should be true outcome will be O`);
+		// 	console.log(`${testing === 'O'} should be true outcome will be X`);
 		// }
 
 		playerTurn.removeAttribute('class', 'playerInfo__turn');
