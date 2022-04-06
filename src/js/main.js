@@ -36,12 +36,13 @@ const gameBoard = (() => {
 
 	const resetBoard = () => {
 		const forReset = (params) => {
-			for (let i = 0; i < params.length; i++) {
-				params[i] = '';
-			}
+			params.splice(0, params.length);
 		};
 
-		forReset(board);
+		for (let i = 0; i < board.length; i++) {
+			board[i] = '';
+		}
+
 		forReset(playerOne);
 		forReset(playerTwo);
 	};
@@ -71,7 +72,7 @@ const displayController = (() => {
 				gameController.winningCondition();
 			};
 
-			const eventOptions = (round = false) => {
+			const eventOptions = (round = true) => {
 				return { once: round };
 			};
 
@@ -172,12 +173,6 @@ const gameController = (() => {
 		if (result === 'X') {
 			changingPlayers();
 		}
-
-		// REFERRENCE
-		// if (resetBoard) {
-		// 	console.log(`${testing === !'X'} should be true outcome will be O`);
-		// 	console.log(`${testing === 'O'} should be true outcome will be X`);
-		// }
 
 		playerTurn.removeAttribute('class', 'playerInfo__turn');
 		playerTurn.textContent = '';

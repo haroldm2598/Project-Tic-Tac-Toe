@@ -191,3 +191,4 @@ Progress // TARGET COMPLETION 2weeks or less
 - JSON stringify is the problem
 - Solve using one only condition statement var === 'X'
 - Only one problem and good to go the problem is the once
+- Get only the eventOptions not the entire eventFunction
