@@ -23,7 +23,7 @@ const gameBoard = (() => {
 				playerOne.push(index);
 			}
 
-			if (element.includes('O')) {
+			if (element === 'O') {
 				playerTwo.push(index);
 			}
 		});
@@ -31,6 +31,8 @@ const gameBoard = (() => {
 		let p1 = [...new Set(playerOne)];
 		let p2 = [...new Set(playerTwo)];
 
+		console.log(p1);
+		console.log(p2);
 		return { p1, p2 };
 	};
 
@@ -58,9 +60,10 @@ const displayController = (() => {
 		parent.addEventListener(type, callBack, options);
 	};
 
-	const testingFunction = () => {
+	const testingFunction = (() => {
 		mainBox.forEach((element, index) => {
 			const playerTurn = document.createElement('p');
+
 			playerTurn.setAttribute('class', 'main__box--para');
 			playerTurn.setAttribute('id', 'mainBoxPara');
 
@@ -76,12 +79,12 @@ const displayController = (() => {
 				return { once: round };
 			};
 
-			globalEventListener(element, 'click', eventListener, eventOptions());
+			globalEventListener(element, 'click', eventListener, eventOptions(false));
 		});
-	};
+	})();
 
-	const testingRestart = () => {
-		const eventListenerRestart = () => {
+	const testingRestart = (() => {
+		const eventListenerRestart = async () => {
 			gameBoard.resetBoard();
 			gameController.resetBoard();
 
@@ -91,15 +94,15 @@ const displayController = (() => {
 					paraId.remove();
 				}
 			});
-
-			testingFunction();
 		};
 
 		globalEventListener(restartBtn, 'click', eventListenerRestart);
-	};
+	})();
 
-	testingFunction();
-	testingRestart();
+	// window.addEventListener('load', testingRestart);
+	// window.addEventListener('load', testingFunction);
+	// testingRestart();
+	// testingFunction();
 })();
 
 const gameController = (() => {
