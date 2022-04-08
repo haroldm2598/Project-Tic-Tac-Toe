@@ -14,11 +14,12 @@ const gameBoard = (() => {
 		for (let i = 0; i < sign.length; i++) {
 			board.splice(index, 1, sign[i]);
 		}
-		console.log(board);
+
+		// console.log(board);
 	};
 
 	const getBoard = () => {
-		board.forEach((element, index) => {
+		board.map((element, index) => {
 			if (element === 'X') {
 				playerOne.push(index);
 			}
@@ -31,8 +32,6 @@ const gameBoard = (() => {
 		let p1 = [...new Set(playerOne)];
 		let p2 = [...new Set(playerTwo)];
 
-		console.log(p1);
-		console.log(p2);
 		return { p1, p2 };
 	};
 
@@ -60,12 +59,16 @@ const displayController = (() => {
 		parent.addEventListener(type, callBack, options);
 	};
 
-	const testingFunction = (() => {
+	const mainFunction = () => {
 		mainBox.forEach((element, index) => {
 			const playerTurn = document.createElement('p');
 
 			playerTurn.setAttribute('class', 'main__box--para');
 			playerTurn.setAttribute('id', 'mainBoxPara');
+
+			const eventOptions = (round = true) => {
+				return { once: round };
+			};
 
 			const eventListener = () => {
 				let next = gameController.changingPlayers();
@@ -75,34 +78,26 @@ const displayController = (() => {
 				gameController.winningCondition();
 			};
 
-			const eventOptions = (round = true) => {
-				return { once: round };
+			const eventListenerRestart = () => {
+				gameBoard.resetBoard();
+				gameController.resetBoard();
+
+				mainBox.forEach(() => {
+					const paraId = document.querySelector('#mainBoxPara');
+					if (document.body.contains(paraId)) {
+						paraId.remove();
+					}
+				});
+
+				globalEventListener(element, 'click', eventListener, eventOptions());
 			};
 
-			globalEventListener(element, 'click', eventListener, eventOptions(false));
+			globalEventListener(element, 'click', eventListener, eventOptions());
+			globalEventListener(restartBtn, 'click', eventListenerRestart);
 		});
-	})();
+	};
 
-	const testingRestart = (() => {
-		const eventListenerRestart = async () => {
-			gameBoard.resetBoard();
-			gameController.resetBoard();
-
-			mainBox.forEach(() => {
-				const paraId = document.querySelector('#mainBoxPara');
-				if (document.body.contains(paraId)) {
-					paraId.remove();
-				}
-			});
-		};
-
-		globalEventListener(restartBtn, 'click', eventListenerRestart);
-	})();
-
-	// window.addEventListener('load', testingRestart);
-	// window.addEventListener('load', testingFunction);
-	// testingRestart();
-	// testingFunction();
+	globalEventListener(window, 'load', mainFunction);
 })();
 
 const gameController = (() => {
@@ -157,7 +152,7 @@ const gameController = (() => {
 			return result.length;
 		};
 
-		const conditionFunc = (() => {
+		const conditionFunc = () => {
 			if (boardNumResult(playerOne) === 1) {
 				winnerResult.innerHTML = `Player 1 Won`;
 			} else if (boardNumResult(playerTwo) === 1) {
@@ -167,7 +162,9 @@ const gameController = (() => {
 			} else {
 				winnerResult.innerHTML = null;
 			}
-		})();
+		};
+
+		conditionFunc();
 	};
 
 	const resetBoard = () => {

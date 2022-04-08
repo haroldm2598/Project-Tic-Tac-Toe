@@ -181,7 +181,7 @@ Progress // TARGET COMPLETION 2weeks or less
 - Problem always present how to display if the game already done and no winners for draws
 - Check the array length of both player if both of them have 3 and 4 length therefore must be draw
 
-### March 29 - April 7
+### March 29 - April 8
 
 - Create a function where you will store the event options
 - Try to make switching function where it will change the options
@@ -193,4 +193,4 @@ Progress // TARGET COMPLETION 2weeks or less
 - Only one problem and good to go the problem is the once
 - Get only the eventOptions not the entire eventFunction
 - Getting the entire eventFunction will lead to X - O bug
-- Solution only using Window event
+- Solution reclared inside the testing function and then recall the event listener
